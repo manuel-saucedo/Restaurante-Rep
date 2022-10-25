@@ -192,6 +192,11 @@ public class JPComanda extends javax.swing.JFrame {
 
         B_ok_F.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         B_ok_F.setText("OK");
+        B_ok_F.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ok_FActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -268,6 +273,10 @@ public class JPComanda extends javax.swing.JFrame {
         //Agrega los datos a la tabla de JPane
         modelo.addRow(D);
     }//GEN-LAST:event_B_sig_OActionPerformed
+
+    private void B_ok_FActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ok_FActionPerformed
+        
+    }//GEN-LAST:event_B_ok_FActionPerformed
 
     /**
      * @param args the command line arguments

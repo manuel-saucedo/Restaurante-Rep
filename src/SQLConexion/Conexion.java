@@ -15,7 +15,7 @@ import java.sql.DriverManager;
  */
 public class Conexion {
     
-    Connection conectar = null;
+   Connection conectar = null;
 public Connection conexion(){
     try{
         Class.forName("com.mysql.jdbc.Driver");
@@ -24,6 +24,8 @@ public Connection conexion(){
     }catch(Exception e){
          JOptionPane.showMessageDialog(null, "Error de conexion " + e.getMessage());
     }
-    return conectar; 
+    return conectar;
+    
     }
+
 }

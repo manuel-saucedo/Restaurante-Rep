@@ -58,6 +58,7 @@ public class JPComanda extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         jLabel1.setText("ORDEN");
 
+        jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N

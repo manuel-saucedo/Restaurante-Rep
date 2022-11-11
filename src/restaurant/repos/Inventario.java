@@ -132,7 +132,7 @@ DefaultTableModel modelo;
         jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         jLabel2.setText("ID:");
 
-        btnAñadir.setBackground(new java.awt.Color(229, 217, 182));
+        btnAñadir.setBackground(new java.awt.Color(18, 90, 173));
         btnAñadir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAñadir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -147,6 +147,7 @@ DefaultTableModel modelo;
         });
 
         jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("AÑADIR");
 
         javax.swing.GroupLayout btnAñadirLayout = new javax.swing.GroupLayout(btnAñadir);
@@ -166,7 +167,7 @@ DefaultTableModel modelo;
                 .addContainerGap())
         );
 
-        btnBorrar.setBackground(new java.awt.Color(229, 217, 182));
+        btnBorrar.setBackground(new java.awt.Color(18, 90, 173));
         btnBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,6 +182,7 @@ DefaultTableModel modelo;
         });
 
         jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("ELIMINAR");
 
         javax.swing.GroupLayout btnBorrarLayout = new javax.swing.GroupLayout(btnBorrar);
@@ -200,7 +202,7 @@ DefaultTableModel modelo;
                 .addContainerGap())
         );
 
-        btnBuscar.setBackground(new java.awt.Color(229, 217, 182));
+        btnBuscar.setBackground(new java.awt.Color(18, 90, 173));
         btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -215,6 +217,7 @@ DefaultTableModel modelo;
         });
 
         jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("BUSCAR");
 
         javax.swing.GroupLayout btnBuscarLayout = new javax.swing.GroupLayout(btnBuscar);
@@ -234,7 +237,7 @@ DefaultTableModel modelo;
                 .addContainerGap())
         );
 
-        btnAct.setBackground(new java.awt.Color(229, 217, 182));
+        btnAct.setBackground(new java.awt.Color(18, 90, 173));
         btnAct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -249,6 +252,7 @@ DefaultTableModel modelo;
         });
 
         jLabel11.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("ACTUALIZAR");
 
         javax.swing.GroupLayout btnActLayout = new javax.swing.GroupLayout(btnAct);
@@ -431,32 +435,31 @@ DefaultTableModel modelo;
 
     private void btnActMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActMouseExited
         // TODO add your handling code here:
-        btnAct.setBackground(new Color(229,217,182));
+        resetColor(btnAct);
     }//GEN-LAST:event_btnActMouseExited
 
     private void btnActMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActMouseEntered
         // TODO add your handling code here:
-        btnAct.setBackground(Color.WHITE);
+        setColor(btnAct);
     }//GEN-LAST:event_btnActMouseEntered
 
     private void btnBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseEntered
         // TODO add your handling code here:
-        btnBorrar.setBackground(Color.WHITE);
+        setColor(btnBorrar);
     }//GEN-LAST:event_btnBorrarMouseEntered
 
     private void btnBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseExited
-        // TODO add your handling code here:
-        btnBorrar.setBackground(new Color(229,217,182));
+        resetColor(btnBorrar);
     }//GEN-LAST:event_btnBorrarMouseExited
 
     private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
         // TODO add your handling code here:
-        btnBuscar.setBackground(new Color(229,217,182));
+        resetColor(btnBuscar);
     }//GEN-LAST:event_btnBuscarMouseExited
 
     private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
         // TODO add your handling code here:
-        btnBuscar.setBackground(Color.WHITE);
+        setColor(btnBuscar);
     }//GEN-LAST:event_btnBuscarMouseEntered
             public void eliminarRegistro(){
         

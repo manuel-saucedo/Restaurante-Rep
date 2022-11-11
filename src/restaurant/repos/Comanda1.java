@@ -102,7 +102,7 @@ public class Comanda1 extends javax.swing.JPanel {
 
         Cliente1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
 
-        B_sig_O.setBackground(new java.awt.Color(229, 217, 182));
+        B_sig_O.setBackground(new java.awt.Color(18, 90, 173));
         B_sig_O.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         B_sig_O.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -111,6 +111,7 @@ public class Comanda1 extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SIGUIENTE");
 
         javax.swing.GroupLayout B_sig_OLayout = new javax.swing.GroupLayout(B_sig_O);

@@ -518,46 +518,6 @@ DefaultTableModel modelo;
              JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
         }
     }
-            public void actualizarDatos(){
-    try{
-        String SQL = "update inventario set Nombre=?,Cantidadxgr_ml=?,Precioxgr_ml=?,Proveedor=? where ID=?";
-
-
-        ps.setString(1, txtNomI.getText());
-        ps.setInt(2, Integer.parseInt(txtCantI.getText()));
-        ps.setInt(3, Integer.parseInt(txtPrecI.getText()));
-        ps.setString(4,txtProvI.getText());
-        ps.setInt(5, Integer.parseInt(txtIDI.getText()));
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
-    }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Actualizacion  " +e.getMessage());
-    }
-}
-    public void insertarDatos(){
-    try{
-        String SQL = "insert into inventario(ID,Nombre, Cantidadxgr_ml, Precioxgr_ml, Proveedor) values(?,?,?,?,?)";
-        PreparedStatement pst = con.prepareStatement(SQL);
-        //Envia lo que se ingresa en el cuadro de texto
-        //pst.setString(1, txtID.getText());
-        pst.setString(1, txtIDI.getText());
-        pst.setString(2, txtNomI.getText());
-        pst.setInt(3, Integer.parseInt(txtCantI.getText()));
-        pst.setInt(4, Integer.parseInt(txtPrecI.getText()));
-        pst.setString(5,txtProvI.getText());
-        pst.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Registro excitoso");
-    }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Registro  " +e.getMessage());
-    }
-}
-        public void limpiarCajas(){
-    txtIDI.setText("");
-    txtNomI.setText("");
-    txtCantI.setText("");
-    txtPrecI.setText("");
-    txtProvI.setText("");
-}
     void setColor(JPanel panel){
     panel.setBackground(new Color(21,101,192));
     }

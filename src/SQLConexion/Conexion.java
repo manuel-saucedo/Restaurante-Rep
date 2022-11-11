@@ -5,9 +5,11 @@
 package SQLConexion;
 
 
-import com.sun.jdi.connect.spi.Connection;
 import javax.swing.JOptionPane;
 import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,17 +17,24 @@ import java.sql.DriverManager;
  */
 public class Conexion {
     
-   Connection conectar = null;
+   Connection con = null;
 public Connection conexion(){
-    try{
+   try{
         Class.forName("com.mysql.jdbc.Driver");
-        conectar = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/restaurant_disi","root","");
+        con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/restaurant_disi","root","");
         JOptionPane.showMessageDialog(null, "Conexion exitosa");
     }catch(Exception e){
          JOptionPane.showMessageDialog(null, "Error de conexion " + e.getMessage());
     }
-    return conectar;
-    
+    return con; 
+    }
+
+    public Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Statement createStatement() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

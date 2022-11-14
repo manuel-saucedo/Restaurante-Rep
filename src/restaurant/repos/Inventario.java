@@ -461,37 +461,7 @@ DefaultTableModel modelo;
         // TODO add your handling code here:
         setColor(btnBuscar);
     }//GEN-LAST:event_btnBuscarMouseEntered
-            public void eliminarRegistro(){
-        
-                //int filaSeleccionada = TableEm.getSelectedRow();
-                
-        try{
-            ps = con.prepareStatement("delete from inventario where ID=?");
-            ps.setInt(1,Integer.parseInt(txtIDI.getText()));
-            int n = ps.executeUpdate();
-            if (n>=0){
-                 JOptionPane.showMessageDialog(null, "Registro eliminado");
-            }
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
-        }
-    }
-            public void actualizarDatos(){
-    try{
-        String SQL = "update inventario set Nombre=?,Cantidadxgr_ml=?,Precioxgr_ml=?,Proveedor=? where ID=?";
-
-
-        ps.setString(1, txtNomI.getText());
-        ps.setInt(2, Integer.parseInt(txtCantI.getText()));
-        ps.setInt(3, Integer.parseInt(txtPrecI.getText()));
-        ps.setString(4,txtProvI.getText());
-        ps.setInt(5, Integer.parseInt(txtIDI.getText()));
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
-    }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Actualizacion  " +e.getMessage());
-    }
-}
+    
     public void insertarDatos(){
     try{
         String SQL = "insert into inventario(ID,Nombre, Cantidadxgr_ml, Precioxgr_ml, Proveedor) values(?,?,?,?,?)";
@@ -516,6 +486,38 @@ DefaultTableModel modelo;
     txtPrecI.setText("");
     txtProvI.setText("");
 }
+        public void actualizarDatos(){
+    try{
+        String SQL = "update inventario set Nombre=?,Cantidadxgr_ml=?,Precioxgr_ml=?,Proveedor=? where ID=?";
+        
+        ps = con.prepareStatement(SQL);
+        ps.setString(1, txtNomI.getText());
+        ps.setInt(2, Integer.parseInt(txtCantI.getText()));
+        ps.setInt(3, Integer.parseInt(txtPrecI.getText()));
+        ps.setString(4,txtProvI.getText());
+        ps.setInt(5, Integer.parseInt(txtIDI.getText()));
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
+    }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Error de Actualizacion  " +e.getMessage());
+    }
+}        
+    
+    public void eliminarRegistro(){
+        
+                //int filaSeleccionada = TableEm.getSelectedRow();
+                
+        try{
+            ps = con.prepareStatement("delete from inventario where ID=?");
+            ps.setInt(1,Integer.parseInt(txtIDI.getText()));
+            int n = ps.executeUpdate();
+            if (n>=0){
+                 JOptionPane.showMessageDialog(null, "Registro eliminado");
+            }
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
+        }
+    }
     void setColor(JPanel panel){
     panel.setBackground(new Color(21,101,192));
     }

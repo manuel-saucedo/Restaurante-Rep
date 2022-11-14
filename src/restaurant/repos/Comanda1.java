@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package restaurant.repos;
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -107,6 +109,12 @@ public class Comanda1 extends javax.swing.JPanel {
         B_sig_O.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 B_sig_OMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                B_sig_OMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                B_sig_OMouseExited(evt);
             }
         });
 
@@ -284,6 +292,23 @@ public class Comanda1 extends javax.swing.JPanel {
         modelo.addRow(D);
     }//GEN-LAST:event_B_sig_OMouseClicked
 
+    private void B_sig_OMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_sig_OMouseEntered
+        // TODO add your handling code here:
+        setColor(B_sig_O);
+    }//GEN-LAST:event_B_sig_OMouseEntered
+
+    private void B_sig_OMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_sig_OMouseExited
+        // TODO add your handling code here:
+        resetColor(B_sig_O);
+    }//GEN-LAST:event_B_sig_OMouseExited
+
+    
+    void setColor(JPanel panel){
+    panel.setBackground(new Color(21,101,192));
+    }
+    void resetColor(JPanel panel){
+        panel.setBackground(new Color(18,90,173));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_ok_F;

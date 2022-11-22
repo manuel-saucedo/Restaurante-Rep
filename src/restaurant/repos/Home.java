@@ -61,7 +61,7 @@ public class Home extends javax.swing.JFrame {
         btnEmp = new javax.swing.JPanel();
         txtEmp = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        btnclear = new javax.swing.JPanel();
         btnInv = new javax.swing.JPanel();
         txtinv = new javax.swing.JLabel();
         iconinv = new javax.swing.JLabel();
@@ -228,21 +228,21 @@ public class Home extends javax.swing.JFrame {
 
         jbarlat.add(btnEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, -1));
 
-        jPanel5.setBackground(new java.awt.Color(18, 90, 173));
-        jPanel5.setPreferredSize(new java.awt.Dimension(0, 36));
+        btnclear.setBackground(new java.awt.Color(18, 90, 173));
+        btnclear.setPreferredSize(new java.awt.Dimension(0, 36));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout btnclearLayout = new javax.swing.GroupLayout(btnclear);
+        btnclear.setLayout(btnclearLayout);
+        btnclearLayout.setHorizontalGroup(
+            btnclearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        btnclearLayout.setVerticalGroup(
+            btnclearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 36, Short.MAX_VALUE)
         );
 
-        jbarlat.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 220, -1));
+        jbarlat.add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 220, -1));
 
         btnInv.setBackground(new java.awt.Color(18, 90, 173));
         btnInv.setPreferredSize(new java.awt.Dimension(0, 36));
@@ -669,6 +669,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel btnInv;
     private javax.swing.JPanel btnPrin;
     private javax.swing.JPanel btnProv;
+    private javax.swing.JPanel btnclear;
     private javax.swing.JPanel content;
     private javax.swing.JLabel fecha;
     private javax.swing.JLabel iconcomanda;
@@ -676,7 +677,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel iconprov;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jbarlat;
     private javax.swing.JPanel jmouse;

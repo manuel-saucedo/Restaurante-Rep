@@ -58,7 +58,9 @@ public class Home extends javax.swing.JFrame {
         btnProv = new javax.swing.JPanel();
         txtprov = new javax.swing.JLabel();
         iconprov = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        btnEmp = new javax.swing.JPanel();
+        txtEmp = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnInv = new javax.swing.JPanel();
         txtinv = new javax.swing.JLabel();
@@ -182,21 +184,49 @@ public class Home extends javax.swing.JFrame {
 
         jbarlat.add(btnProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 220, -1));
 
-        jPanel3.setBackground(new java.awt.Color(18, 90, 173));
-        jPanel3.setPreferredSize(new java.awt.Dimension(0, 36));
+        btnEmp.setBackground(new java.awt.Color(18, 90, 173));
+        btnEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEmp.setPreferredSize(new java.awt.Dimension(0, 36));
+        btnEmp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEmpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEmpMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEmpMousePressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        txtEmp.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        txtEmp.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmp.setText("EMPLEADOS");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/empleados.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnEmpLayout = new javax.swing.GroupLayout(btnEmp);
+        btnEmp.setLayout(btnEmpLayout);
+        btnEmpLayout.setHorizontalGroup(
+            btnEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnEmpLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEmp)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 36, Short.MAX_VALUE)
+        btnEmpLayout.setVerticalGroup(
+            btnEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEmpLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(btnEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmp)
+                    .addComponent(jLabel3))
+                .addContainerGap())
         );
 
-        jbarlat.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, -1));
+        jbarlat.add(btnEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, -1));
 
         jPanel5.setBackground(new java.awt.Color(18, 90, 173));
         jPanel5.setPreferredSize(new java.awt.Dimension(0, 36));
@@ -249,7 +279,7 @@ public class Home extends javax.swing.JFrame {
             btnInvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnInvLayout.createSequentialGroup()
                 .addGap(0, 10, Short.MAX_VALUE)
-                .addGroup(btnInvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(btnInvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtinv)
                     .addComponent(iconinv))
                 .addGap(2, 2, 2))
@@ -470,6 +500,7 @@ public class Home extends javax.swing.JFrame {
         setColor(btnCom);
         resetColor(btnProv);
         resetColor(btnInv);
+        resetColor(btnEmp);
         //Seleccion de Area
         Comanda1 com = new Comanda1();
         com.setSize(800,550);
@@ -513,7 +544,9 @@ public class Home extends javax.swing.JFrame {
         resetColor(btnPrin);
         resetColor(btnCom);
         resetColor(btnProv);
+        resetColor(btnEmp);
         setColor(btnInv);
+        
         //Seleccion de Area
         Inventario Inv = new Inventario();
         Inv.setSize(800,550);
@@ -530,6 +563,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btnCom);
         resetColor(btnProv);
         resetColor(btnInv);
+        resetColor(btnEmp);
         //seleccion de area
         Principal p1 = new Principal();
         p1.setSize(800, 550);
@@ -553,6 +587,36 @@ public class Home extends javax.swing.JFrame {
         if(btnCom.getBackground().getRGB() != -15574355 || btnProv.getBackground().getRGB() != -15574355 || btnInv.getBackground().getRGB() != -15574355)
             resetColor(btnPrin);
     }//GEN-LAST:event_btnPrinMouseExited
+
+    private void btnEmpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpMouseEntered
+        // TODO add your handling code here:
+        if(btnEmp.getBackground().getRGB() == -15574355)
+            setColor(btnEmp);
+    }//GEN-LAST:event_btnEmpMouseEntered
+
+    private void btnEmpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpMouseExited
+        // TODO add your handling code here:
+        if(btnCom.getBackground().getRGB() != -15574355 || btnPrin.getBackground().getRGB() != -15574355 || btnCom.getBackground().getRGB() != -15574355)
+            resetColor(btnEmp);
+    }//GEN-LAST:event_btnEmpMouseExited
+
+    private void btnEmpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpMousePressed
+        // TODO add your handling code here:
+        resetColor(btnPrin);
+        resetColor(btnCom);
+        resetColor(btnProv);
+        resetColor(btnInv);
+        setColor(btnEmp);
+        //Seleccion de Area
+        Empleados emp = new Empleados();
+        emp.setSize(800,550);
+        emp.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(emp, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_btnEmpMousePressed
 
     /**
      * @param args the command line arguments
@@ -601,6 +665,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Jtime;
     private javax.swing.JPanel Leave;
     private javax.swing.JPanel btnCom;
+    private javax.swing.JPanel btnEmp;
     private javax.swing.JPanel btnInv;
     private javax.swing.JPanel btnPrin;
     private javax.swing.JPanel btnProv;
@@ -610,11 +675,12 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel iconinv;
     private javax.swing.JLabel iconprov;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jbarlat;
     private javax.swing.JPanel jmouse;
+    private javax.swing.JLabel txtEmp;
     private javax.swing.JLabel txtExit;
     private javax.swing.JLabel txtPrin;
     private javax.swing.JLabel txtcomanda;

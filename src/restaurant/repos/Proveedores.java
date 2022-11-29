@@ -4,6 +4,11 @@
  */
 package restaurant.repos;
 
+import SQLConexion.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +20,12 @@ public class Proveedores extends javax.swing.JPanel {
     /**
      * Creates new form Proveedores
      */
+    
+ Conexion cc = new Conexion();
+Connection con = cc.conexion();
+PreparedStatement ps;
+ResultSet rs;
+Statement st;
     public Proveedores() {
         initComponents();
     }
@@ -53,38 +64,40 @@ public class Proveedores extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
+        txtID = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 550));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Nombre Legal:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, -1));
 
         jLabel3.setText("Nombre Comercial:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, -1, -1));
 
         jLabel4.setText("Materia Prima:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
 
         jLabel5.setText("Cantidad por Unidad:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 177, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, -1, -1));
 
         jLabel6.setText("Precio Unitario:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
 
         jLabel7.setText("Precio Total:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 254, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, -1, -1));
 
         jLabel8.setText("Telefono:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
-        jPanel1.add(txtNlegal, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 220, -1));
-        jPanel1.add(txtNcom, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 100, 220, -1));
-        jPanel1.add(txtMatprim, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 134, 220, -1));
-        jPanel1.add(txtCporU, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 174, 220, -1));
-        jPanel1.add(txtPrecioU, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 214, 220, -1));
-        jPanel1.add(txtPrecioT, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 251, 220, -1));
-        jPanel1.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 220, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, -1, -1));
+        jPanel1.add(txtNlegal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 220, -1));
+        jPanel1.add(txtNcom, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 220, -1));
+        jPanel1.add(txtMatprim, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 220, -1));
+        jPanel1.add(txtCporU, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 220, -1));
+        jPanel1.add(txtPrecioU, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 220, -1));
+        jPanel1.add(txtPrecioT, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 220, -1));
+        jPanel1.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 220, -1));
 
         jPanel2.setBackground(new java.awt.Color(18, 90, 173));
         jPanel2.setPreferredSize(new java.awt.Dimension(111, 29));
@@ -108,7 +121,7 @@ public class Proveedores extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(18, 90, 173));
         jPanel3.setPreferredSize(new java.awt.Dimension(111, 29));
@@ -132,7 +145,7 @@ public class Proveedores extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, -1, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(18, 90, 173));
         jPanel4.setPreferredSize(new java.awt.Dimension(111, 29));
@@ -156,7 +169,7 @@ public class Proveedores extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(18, 90, 173));
         jPanel5.setPreferredSize(new java.awt.Dimension(111, 29));
@@ -180,7 +193,7 @@ public class Proveedores extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, -1, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 460, -1, -1));
 
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -201,6 +214,10 @@ public class Proveedores extends javax.swing.JPanel {
         jScrollPane1.setViewportView(Table);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 550));
+        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 220, -1));
+
+        jLabel12.setText("Identificador:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -222,10 +239,10 @@ public class Proveedores extends javax.swing.JPanel {
         if (fila ==-1){
             JOptionPane.showMessageDialog(null, "Fila no Seleccionada");
         }else{
-            int NomL=Integer.parseInt((String)Table.getValueAt(fila, 0));
+            String NomL=(String)Table.getValueAt(fila, 0);
             String NomC=(String)Table.getValueAt(fila, 1);
-            int MatP=Integer.parseInt((String)Table.getValueAt(fila, 2));
-            int CporU=Integer.parseInt((String)Table.getValueAt(fila, 3));
+            String MatP=(String)Table.getValueAt(fila, 2);
+            String CporU=(String)Table.getValueAt(fila, 3);
             String PrecioU=(String)Table.getValueAt(fila, 4);
             
             //Mandamos a llamar a las variables
@@ -239,12 +256,78 @@ public class Proveedores extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_TableMouseClicked
 
+    //Metodos
+    
+     public void eliminarRegistro(){
+        int filaSeleccionada = Table.getSelectedRow();
+        try{
+            String SQL = "delete from provedores where ID="+Table.getValueAt(filaSeleccionada,0);
+            Statement st = con.createStatement();
+            int n = st.executeUpdate(SQL);
+            if (n>=0){
+                 JOptionPane.showMessageDialog(null, "Registro eliminado");
+            }
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
+        }
+    }
+    public void limpiarCajas(){
+   
+    txtID.setText("");
+    txtNcom.setText("");
+    txtMatprim.setText("");
+    txtCporU.setText("");
+    txtPrecioU.setText("");
+    txtPrecioT.setText("");
+    txtTel.setText("");
+}
 
+        public void insertarDatos(){
+        String SQL = "insert into proveedores (ID,Nombre_legal,Nombre_comercial, Materia_prima, Precio_unitario, Precio_total,Telefono,) values(?,?,?,?,?,?,?,?)";    
+        try{
+        ps = con.prepareStatement(SQL);        
+//PreparedStatement pst = con.prepareStatement(SQL);
+        //Envia lo que se ingresa en el cuadro de texto
+        ps.setString(1, txtID.getText());
+        ps.setString(2, txtNcom.getText());
+        ps.setString(3, txtMatprim.getText());
+        ps.setString(4, txtCporU.getText());
+        ps.setString(5, txtPrecioU.getText());
+        ps.setString(6, txtPrecioT.getText());
+        ps.setString(7, txtTel.getText());
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Registro excitoso");
+    }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Error de Registro  " +e.getMessage());
+    }
+}
+  
+        public void actualizarDatos(){
+     String SQL = "update proveedores set  Nombre=?,Apellido_P=?,Apellido_M=?,Telefono=?,Direccion=?,ID_Puesto=? where ID=?";
+    try{
+       ps = con.prepareStatement(SQL);
+
+        //Envia lo que se ingresa en el cuadro de texto
+        ps.setString(1, txtNcom.getText());
+        ps.setString(2, txtMatprim.getText());
+        ps.setString(3, txtCporU.getText());
+        ps.setString(4,txtPrecioU.getText());
+        ps.setString(5, txtPrecioT.getText());
+        ps.setString(6,txtTel.getText());
+        ps.setString(7,txtID.getText());
+        ps.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
+    }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Error de Actualizacion  " +e.getMessage());
+    }
+}
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Table;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -260,6 +343,7 @@ public class Proveedores extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtCporU;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtMatprim;
     private javax.swing.JTextField txtNcom;
     private javax.swing.JTextField txtNlegal;

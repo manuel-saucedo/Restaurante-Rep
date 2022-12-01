@@ -34,6 +34,7 @@ ResultSet rs;
 Statement st;
     public Proveedores() {
         initComponents();
+        mostrarDatos();
     }
 
     /**
@@ -258,13 +259,13 @@ Statement st;
 
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         Table.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -274,7 +275,7 @@ Statement st;
         });
         jScrollPane1.setViewportView(Table);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 550));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 550));
         jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 220, -1));
 
         jLabel12.setText("Identificador:");
@@ -336,18 +337,24 @@ Statement st;
         if (fila ==-1){
             JOptionPane.showMessageDialog(null, "Fila no Seleccionada");
         }else{
-            String NomL=(String)Table.getValueAt(fila, 0);
-            String NomC=(String)Table.getValueAt(fila, 1);
-            String MatP=(String)Table.getValueAt(fila, 2);
-            String CporU=(String)Table.getValueAt(fila, 3);
-            String PrecioU=(String)Table.getValueAt(fila, 4);
+             String ID=(String)Table.getValueAt(fila, 0);
+            String NomL=(String)Table.getValueAt(fila, 1);
+            String NomC=(String)Table.getValueAt(fila, 2);
+            String MatP=(String)Table.getValueAt(fila, 3);
+            String CporU=(String)Table.getValueAt(fila, 4);
+            String PrecioU=(String)Table.getValueAt(fila,5);
+              String PrecioT=(String)Table.getValueAt(fila,6);
+            String Telefono=(String)Table.getValueAt(fila, 7);
             
             //Mandamos a llamar a las variables
-            txtNlegal.setText(""+NomL);
-            txtNcom.setText(""+NomC);
-            txtMatprim.setText(""+MatP);
-            txtCporU.setText(""+CporU);
-            txtPrecioU.setText(""+PrecioU);
+            txtNlegal.setText(ID);
+            txtNlegal.setText(NomL);
+            txtNcom.setText(NomC);
+            txtMatprim.setText(MatP);
+            txtCporU.setText(CporU);
+            txtPrecioU.setText(PrecioU);
+            txtPrecioT.setText(PrecioT);
+            txtTel.setText(Telefono);
             //txtPrecioT.setText();
             //txtTel.setText();
         }
@@ -465,10 +472,9 @@ Statement st;
 }
 
         public void insertarDatos(){
-        String SQL = "insert into proveedores (ID,Nombre_legal,Nombre_comercial, Materia_prima, Precio_unitario, Precio_total,Telefono,) values(?,?,?,?,?,?,?,?)";    
         try{
+        String SQL = "insert into proveedores (ID,Nombre_legal,Nombre_comercial, Materia_prima,Cantidadxunidad, Precio_unitario, Precio_total,Telefono) values(?,?,?,?,?,?,?,?)";    
         ps = con.prepareStatement(SQL);        
-//PreparedStatement pst = con.prepareStatement(SQL);
         //Envia lo que se ingresa en el cuadro de texto
         ps.setString(1, txtID.getText());
         ps.setString(2, txtNcom.getText());
@@ -486,19 +492,19 @@ Statement st;
 }
   
         public void actualizarDatos(){
-     String SQL = "update proveedores set  Nombre_legal=?,Nombre_comercial=?,Materia_prima=?,Cantidadxunidad=?,Precio_unitario=?,Precio_total=?,Telefono =?, where ID=?";
+     String SQL = "update proveedores set  Nombre_legal=?,Nombre_comercial=?,Materia_prima=?,Cantidadxunidad=?,Precio_unitario=?,Precio_total=?,Telefono =? where ID=?";
     try{
        ps = con.prepareStatement(SQL);
 
         //Envia lo que se ingresa en el cuadro de texto
-        ps.setString(1, txtNcom.getText());
-        ps.setString(2, txtNlegal.getText());
-        ps.setString(3, txtMatprim.getText());
-        ps.setString(4, txtCporU.getText());
-        ps.setString(5,txtPrecioU.getText());
-        ps.setString(6, txtPrecioT.getText());
-        ps.setString(7,txtTel.getText());
-        ps.setString(8,txtID.getText());
+        ps.setString(1,txtID.getText());
+        ps.setString(2, txtNcom.getText());
+        ps.setString(3, txtNlegal.getText());
+        ps.setString(4, txtMatprim.getText());
+        ps.setString(5, txtCporU.getText());
+        ps.setString(6,txtPrecioU.getText());
+        ps.setString(7, txtPrecioT.getText());
+        ps.setString(8,txtTel.getText());
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
     }catch(Exception e){

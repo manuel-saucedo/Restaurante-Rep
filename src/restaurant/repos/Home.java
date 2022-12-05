@@ -54,14 +54,16 @@ public class Home extends javax.swing.JFrame {
         txtrest = new javax.swing.JLabel();
         btnCom = new javax.swing.JPanel();
         txtcomanda = new javax.swing.JLabel();
-        iconcomanda = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         btnProv = new javax.swing.JPanel();
         txtprov = new javax.swing.JLabel();
         iconprov = new javax.swing.JLabel();
         btnEmp = new javax.swing.JPanel();
         txtEmp = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnclear = new javax.swing.JPanel();
+        btnPventa = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        iconcomanda = new javax.swing.JLabel();
         btnInv = new javax.swing.JPanel();
         txtinv = new javax.swing.JLabel();
         iconinv = new javax.swing.JLabel();
@@ -69,6 +71,9 @@ public class Home extends javax.swing.JFrame {
         txtPrin = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btnCmenu = new javax.swing.JPanel();
+        txtEmp1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jmouse = new javax.swing.JPanel();
         Leave = new javax.swing.JPanel();
         txtExit = new javax.swing.JLabel();
@@ -115,30 +120,30 @@ public class Home extends javax.swing.JFrame {
         txtcomanda.setForeground(new java.awt.Color(255, 255, 255));
         txtcomanda.setText("COMANDA");
 
-        iconcomanda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/carro.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/camarero.png"))); // NOI18N
 
         javax.swing.GroupLayout btnComLayout = new javax.swing.GroupLayout(btnCom);
         btnCom.setLayout(btnComLayout);
         btnComLayout.setHorizontalGroup(
             btnComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnComLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(iconcomanda)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtcomanda)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         btnComLayout.setVerticalGroup(
             btnComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnComLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(btnComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(iconcomanda)
+                    .addComponent(jLabel4)
                     .addComponent(txtcomanda))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jbarlat.add(btnCom, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 220, -1));
+        jbarlat.add(btnCom, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 220, -1));
 
         btnProv.setBackground(new java.awt.Color(18, 90, 173));
         btnProv.setEnabled(false);
@@ -182,7 +187,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jbarlat.add(btnProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 220, -1));
+        jbarlat.add(btnProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 220, -1));
 
         btnEmp.setBackground(new java.awt.Color(18, 90, 173));
         btnEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -220,29 +225,57 @@ public class Home extends javax.swing.JFrame {
             btnEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEmpLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(btnEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmp)
-                    .addComponent(jLabel3))
+                .addGroup(btnEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(txtEmp))
                 .addContainerGap())
         );
 
-        jbarlat.add(btnEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, -1));
+        jbarlat.add(btnEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 220, -1));
 
-        btnclear.setBackground(new java.awt.Color(18, 90, 173));
-        btnclear.setPreferredSize(new java.awt.Dimension(0, 36));
+        btnPventa.setBackground(new java.awt.Color(18, 90, 173));
+        btnPventa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPventa.setPreferredSize(new java.awt.Dimension(0, 36));
+        btnPventa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPventaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPventaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnPventaMousePressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout btnclearLayout = new javax.swing.GroupLayout(btnclear);
-        btnclear.setLayout(btnclearLayout);
-        btnclearLayout.setHorizontalGroup(
-            btnclearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jLabel1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("PUNTO DE VENTA");
+
+        iconcomanda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/carro.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnPventaLayout = new javax.swing.GroupLayout(btnPventa);
+        btnPventa.setLayout(btnPventaLayout);
+        btnPventaLayout.setHorizontalGroup(
+            btnPventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPventaLayout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(iconcomanda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(26, 26, 26))
         );
-        btnclearLayout.setVerticalGroup(
-            btnclearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 36, Short.MAX_VALUE)
+        btnPventaLayout.setVerticalGroup(
+            btnPventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPventaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(btnPventaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iconcomanda)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jbarlat.add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 220, -1));
+        jbarlat.add(btnPventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 220, -1));
 
         btnInv.setBackground(new java.awt.Color(18, 90, 173));
         btnInv.setPreferredSize(new java.awt.Dimension(0, 36));
@@ -285,7 +318,7 @@ public class Home extends javax.swing.JFrame {
                 .addGap(2, 2, 2))
         );
 
-        jbarlat.add(btnInv, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 220, -1));
+        jbarlat.add(btnInv, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 220, -1));
 
         btnPrin.setBackground(new java.awt.Color(21, 101, 192));
         btnPrin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -313,9 +346,9 @@ public class Home extends javax.swing.JFrame {
         btnPrinLayout.setHorizontalGroup(
             btnPrinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnPrinLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtPrin)
                 .addContainerGap(118, Short.MAX_VALUE))
         );
@@ -335,6 +368,50 @@ public class Home extends javax.swing.JFrame {
         jSeparator1.setAlignmentX(0.7F);
         jSeparator1.setAlignmentY(0.7F);
         jbarlat.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 96, 220, 19));
+
+        btnCmenu.setBackground(new java.awt.Color(18, 90, 173));
+        btnCmenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCmenu.setPreferredSize(new java.awt.Dimension(0, 36));
+        btnCmenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCmenuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCmenuMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCmenuMousePressed(evt);
+            }
+        });
+
+        txtEmp1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        txtEmp1.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmp1.setText("CARTA MENÚ");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/menu.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnCmenuLayout = new javax.swing.GroupLayout(btnCmenu);
+        btnCmenu.setLayout(btnCmenuLayout);
+        btnCmenuLayout.setHorizontalGroup(
+            btnCmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCmenuLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEmp1)
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        btnCmenuLayout.setVerticalGroup(
+            btnCmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCmenuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(btnCmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmp1)
+                    .addComponent(jLabel5))
+                .addContainerGap())
+        );
+
+        jbarlat.add(btnCmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 220, -1));
 
         BackGraund.add(jbarlat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 640));
 
@@ -406,7 +483,7 @@ public class Home extends javax.swing.JFrame {
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        BackGraund.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 800, 550));
+        BackGraund.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 800, 550));
 
         Jtime.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -497,6 +574,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnComMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComMousePressed
         resetColor(btnPrin);
+        resetColor(btnPventa);
         setColor(btnCom);
         resetColor(btnProv);
         resetColor(btnInv);
@@ -514,6 +592,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnProvMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProvMousePressed
         resetColor(btnPrin);
+        resetColor(btnPventa);
         resetColor(btnCom);
         setColor(btnProv);
         resetColor(btnInv);
@@ -542,6 +621,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnInvMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInvMousePressed
         resetColor(btnPrin);
+        resetColor(btnPventa);
         resetColor(btnCom);
         resetColor(btnProv);
         resetColor(btnEmp);
@@ -560,6 +640,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnPrinMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrinMousePressed
         setColor(btnPrin);
+        resetColor(btnPventa);
         resetColor(btnCom);
         resetColor(btnProv);
         resetColor(btnInv);
@@ -603,6 +684,7 @@ public class Home extends javax.swing.JFrame {
     private void btnEmpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpMousePressed
         // TODO add your handling code here:
         resetColor(btnPrin);
+        resetColor(btnPventa);
         resetColor(btnCom);
         resetColor(btnProv);
         resetColor(btnInv);
@@ -617,6 +699,64 @@ public class Home extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_btnEmpMousePressed
+
+    private void btnPventaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPventaMousePressed
+        resetColor(btnPrin);
+        setColor(btnPventa);
+        resetColor(btnCom);
+        resetColor(btnProv);
+        resetColor(btnInv);
+        resetColor(btnEmp);
+        resetColor(btnCmenu);
+        //Seleccion de Area
+        JPPuntoVenta Pventa = new JPPuntoVenta();
+        Pventa.setSize(800,550);
+        Pventa.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(Pventa, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_btnPventaMousePressed
+
+    private void btnPventaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPventaMouseEntered
+        if(btnPventa.getBackground().getRGB() == -15574355)
+            setColor(btnPventa);
+    }//GEN-LAST:event_btnPventaMouseEntered
+
+    private void btnPventaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPventaMouseExited
+                if(btnPrin.getBackground().getRGB() != -15574355 || btnPrin.getBackground().getRGB() != -15574355 || btnInv.getBackground().getRGB() != -15574355)
+            resetColor(btnPventa);
+    }//GEN-LAST:event_btnPventaMouseExited
+
+    private void btnCmenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCmenuMouseEntered
+        if(btnCmenu.getBackground().getRGB() == -15574355)
+            setColor(btnCmenu);
+    }//GEN-LAST:event_btnCmenuMouseEntered
+
+    private void btnCmenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCmenuMouseExited
+          if(btnEmp.getBackground().getRGB() != -15574355 || btnPrin.getBackground().getRGB() != -15574355 || btnCom.getBackground().getRGB() != -15574355)
+            resetColor(btnCmenu);
+    }//GEN-LAST:event_btnCmenuMouseExited
+
+    private void btnCmenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCmenuMousePressed
+        resetColor(btnPrin);
+        resetColor(btnPventa);
+        resetColor(btnCom);
+        resetColor(btnProv);
+        resetColor(btnInv);
+        resetColor(btnEmp);
+        setColor(btnCmenu);
+        //Seleccion de Area
+        Empleados emp = new Empleados();
+        emp.setSize(800,550);
+        emp.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(emp, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_btnCmenuMousePressed
 
     /**
      * @param args the command line arguments
@@ -664,23 +804,28 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel BackGraund;
     private javax.swing.JPanel Jtime;
     private javax.swing.JPanel Leave;
+    private javax.swing.JPanel btnCmenu;
     private javax.swing.JPanel btnCom;
     private javax.swing.JPanel btnEmp;
     private javax.swing.JPanel btnInv;
     private javax.swing.JPanel btnPrin;
     private javax.swing.JPanel btnProv;
-    private javax.swing.JPanel btnclear;
+    private javax.swing.JPanel btnPventa;
     private javax.swing.JPanel content;
     private javax.swing.JLabel fecha;
     private javax.swing.JLabel iconcomanda;
     private javax.swing.JLabel iconinv;
     private javax.swing.JLabel iconprov;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jbarlat;
     private javax.swing.JPanel jmouse;
     private javax.swing.JLabel txtEmp;
+    private javax.swing.JLabel txtEmp1;
     private javax.swing.JLabel txtExit;
     private javax.swing.JLabel txtPrin;
     private javax.swing.JLabel txtcomanda;

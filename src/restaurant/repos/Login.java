@@ -185,9 +185,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_LeaveMouseExited
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-       // TODO add your handling code here:
+
        String user ="admin";
-       String pass ="12345678";
+       String pass ="12345";
        
        String Pass = new String(txtpass.getPassword());
        

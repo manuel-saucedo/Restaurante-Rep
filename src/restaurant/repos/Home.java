@@ -74,6 +74,9 @@ public class Home extends javax.swing.JFrame {
         btnCmenu = new javax.swing.JPanel();
         txtEmp1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btnCyB = new javax.swing.JPanel();
+        txtEmp2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jmouse = new javax.swing.JPanel();
         Leave = new javax.swing.JPanel();
         txtExit = new javax.swing.JLabel();
@@ -413,6 +416,50 @@ public class Home extends javax.swing.JFrame {
 
         jbarlat.add(btnCmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 220, -1));
 
+        btnCyB.setBackground(new java.awt.Color(18, 90, 173));
+        btnCyB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCyB.setPreferredSize(new java.awt.Dimension(0, 36));
+        btnCyB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCyBMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCyBMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCyBMousePressed(evt);
+            }
+        });
+
+        txtEmp2.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        txtEmp2.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmp2.setText("COMIDA Y BEBIDA");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/comida-rapida.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnCyBLayout = new javax.swing.GroupLayout(btnCyB);
+        btnCyB.setLayout(btnCyBLayout);
+        btnCyBLayout.setHorizontalGroup(
+            btnCyBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCyBLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEmp2)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        btnCyBLayout.setVerticalGroup(
+            btnCyBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCyBLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(btnCyBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmp2)
+                    .addComponent(jLabel6))
+                .addContainerGap())
+        );
+
+        jbarlat.add(btnCyB, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 220, -1));
+
         BackGraund.add(jbarlat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 640));
 
         jmouse.setBackground(new java.awt.Color(255, 255, 255));
@@ -579,6 +626,8 @@ public class Home extends javax.swing.JFrame {
         resetColor(btnProv);
         resetColor(btnInv);
         resetColor(btnEmp);
+        resetColor(btnCmenu);
+        resetColor(btnCyB);
         //Seleccion de Area
         Comanda1 com = new Comanda1();
         com.setSize(800,550);
@@ -596,6 +645,9 @@ public class Home extends javax.swing.JFrame {
         resetColor(btnCom);
         setColor(btnProv);
         resetColor(btnInv);
+        resetColor(btnEmp);
+        resetColor(btnCmenu);
+        resetColor(btnCyB);
         //seleccion de area
         Proveedores prov = new Proveedores();
         prov.setSize(800,550);
@@ -645,6 +697,8 @@ public class Home extends javax.swing.JFrame {
         resetColor(btnProv);
         resetColor(btnInv);
         resetColor(btnEmp);
+        resetColor(btnCmenu);
+        resetColor(btnCyB);
         //seleccion de area
         Principal p1 = new Principal();
         p1.setSize(800, 550);
@@ -689,6 +743,8 @@ public class Home extends javax.swing.JFrame {
         resetColor(btnProv);
         resetColor(btnInv);
         setColor(btnEmp);
+        resetColor(btnCmenu);
+        resetColor(btnCyB);
         //Seleccion de Area
         Empleados emp = new Empleados();
         emp.setSize(800,550);
@@ -747,6 +803,7 @@ public class Home extends javax.swing.JFrame {
         resetColor(btnInv);
         resetColor(btnEmp);
         setColor(btnCmenu);
+        resetColor(btnCyB);
         //Seleccion de Area
         Empleados emp = new Empleados();
         emp.setSize(800,550);
@@ -757,6 +814,36 @@ public class Home extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_btnCmenuMousePressed
+
+    private void btnCyBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCyBMouseEntered
+        if(btnCyB.getBackground().getRGB() == -15574355)
+            setColor(btnCyB);
+    }//GEN-LAST:event_btnCyBMouseEntered
+
+    private void btnCyBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCyBMouseExited
+         if(btnCmenu.getBackground().getRGB() != -15574355 || btnPrin.getBackground().getRGB() != -15574355 || btnCom.getBackground().getRGB() != -15574355)
+            resetColor(btnCyB);
+    }//GEN-LAST:event_btnCyBMouseExited
+
+    private void btnCyBMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCyBMousePressed
+        resetColor(btnPrin);
+        resetColor(btnPventa);
+        resetColor(btnCom);
+        resetColor(btnProv);
+        resetColor(btnInv);
+        resetColor(btnEmp);
+        resetColor(btnCmenu);
+        setColor(btnCyB);
+        //Seleccion de Area
+        JPComidaYBebida cyb = new JPComidaYBebida();
+        cyb.setSize(800,550);
+        cyb.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(cyb, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_btnCyBMousePressed
 
     /**
      * @param args the command line arguments
@@ -806,6 +893,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Leave;
     private javax.swing.JPanel btnCmenu;
     private javax.swing.JPanel btnCom;
+    private javax.swing.JPanel btnCyB;
     private javax.swing.JPanel btnEmp;
     private javax.swing.JPanel btnInv;
     private javax.swing.JPanel btnPrin;
@@ -821,11 +909,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jbarlat;
     private javax.swing.JPanel jmouse;
     private javax.swing.JLabel txtEmp;
     private javax.swing.JLabel txtEmp1;
+    private javax.swing.JLabel txtEmp2;
     private javax.swing.JLabel txtExit;
     private javax.swing.JLabel txtPrin;
     private javax.swing.JLabel txtcomanda;

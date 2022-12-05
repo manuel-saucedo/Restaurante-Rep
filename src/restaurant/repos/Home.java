@@ -629,7 +629,8 @@ public class Home extends javax.swing.JFrame {
         resetColor(btnCmenu);
         resetColor(btnCyB);
         //Seleccion de Area
-        Comanda1 com = new Comanda1();
+        //Comanda1 com = new Comanda1();
+        JPComanda com = new JPComanda();
         com.setSize(800,550);
         com.setLocation(0,0);
         
@@ -805,7 +806,7 @@ public class Home extends javax.swing.JFrame {
         setColor(btnCmenu);
         resetColor(btnCyB);
         //Seleccion de Area
-        Empleados emp = new Empleados();
+        JPCartaMenu emp = new JPCartaMenu();
         emp.setSize(800,550);
         emp.setLocation(0,0);
         

@@ -523,14 +523,14 @@ public class Home extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 820, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        BackGraund.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 800, 550));
+        BackGraund.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 820, 550));
 
         Jtime.setBackground(new java.awt.Color(255, 255, 255));
 

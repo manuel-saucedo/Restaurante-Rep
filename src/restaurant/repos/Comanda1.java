@@ -83,37 +83,37 @@ public class Comanda1 extends javax.swing.JPanel {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 550));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel8.setText("Fecha");
 
-        cantidad.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        cantidad.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         cantidad.setText("Cantidad");
 
-        comida.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        comida.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         comida.setText("Comida");
 
-        bebida.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        bebida.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         bebida.setText("Bebida");
 
-        jLabel12.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel12.setText("Hora");
 
-        jLabel13.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel13.setText("Cliente");
 
-        C_C1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        C_C1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        C_B1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        C_B1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        Bebida1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        Bebida1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        Fecha1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        Fecha1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        Hora1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        Hora1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        Cliente1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        Cliente1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        Comida1.setFont(new java.awt.Font("Roboto Light", 0, 22)); // NOI18N
+        Comida1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         B_sig_O.setBackground(new java.awt.Color(18, 90, 173));
         B_sig_O.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -150,10 +150,10 @@ public class Comanda1 extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel14.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel14.setText("ID");
 
-        ID_O.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
+        ID_O.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jScrollPane2.setViewportView(ID_O);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -166,46 +166,43 @@ public class Comanda1 extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Cliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(bebida)
                                     .addComponent(comida))
                                 .addGap(12, 12, 12)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Bebida1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Comida1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(C_B1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Comida1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(C_C1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(cantidad)
                                         .addGap(9, 9, 9))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(0, 89, Short.MAX_VALUE)
-                                                .addComponent(jLabel14)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel8)
-                                                .addGap(12, 12, 12)
-                                                .addComponent(Fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(Hora1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(Bebida1))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(C_B1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Cliente1)))
-                        .addContainerGap())
+                                    .addComponent(C_C1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(207, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 341, Short.MAX_VALUE)
                         .addComponent(B_sig_O, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(344, 344, 344))))
+                        .addGap(344, 344, 344))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8)
+                        .addGap(12, 12, 12)
+                        .addComponent(Fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Hora1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,26 +219,26 @@ public class Comanda1 extends javax.swing.JPanel {
                     .addComponent(C_B1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Bebida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bebida))
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(Fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
                             .addComponent(Hora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14))
-                        .addGap(36, 36, 36))
+                        .addGap(2, 2, 2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addGap(47, 47, 47)
                 .addComponent(B_sig_O, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("ORDEN", jPanel1);

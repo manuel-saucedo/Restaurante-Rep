@@ -80,6 +80,8 @@ public class JPCartaMenu extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         Tabla_Comida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -100,13 +102,13 @@ public class JPCartaMenu extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(Tabla_Bebida);
 
-        jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         jLabel1.setText("COMIDAS");
 
-        jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         jLabel2.setText("Y COMBOS");
 
-        jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         jLabel3.setText("BEBIDAS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -120,13 +122,10 @@ public class JPCartaMenu extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jLabel1)))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(125, 125, 125))
@@ -146,7 +145,7 @@ public class JPCartaMenu extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addGap(32, 32, 32)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );

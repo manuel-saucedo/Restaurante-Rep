@@ -64,7 +64,7 @@ public class JPCartaMenu extends javax.swing.JPanel {
         Tabla_Comida.setModel(modelo_comida);
         Tabla_Bebida.setModel(modelo_bebida);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos "+ e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos, Base de datos no activada");
         }
     }
 

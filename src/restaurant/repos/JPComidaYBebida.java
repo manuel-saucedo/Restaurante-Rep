@@ -455,7 +455,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(btnBuscarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPanel2.add(btnBuscarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
 
         btnAgregarB.setBackground(new java.awt.Color(18, 90, 173));
         btnAgregarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -493,7 +493,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(btnAgregarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
+        jPanel2.add(btnAgregarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
 
         btnModificarB.setBackground(new java.awt.Color(18, 90, 173));
         btnModificarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -531,7 +531,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel2.add(btnModificarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
+        jPanel2.add(btnModificarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
 
         btnClearB.setBackground(new java.awt.Color(18, 90, 173));
         btnClearB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -569,7 +569,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(btnClearB, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, -1, -1));
+        jPanel2.add(btnClearB, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, -1, -1));
 
         btnEliminarB.setBackground(new java.awt.Color(18, 90, 173));
         btnEliminarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -607,7 +607,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel2.add(btnEliminarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, -1, -1));
+        jPanel2.add(btnEliminarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, -1, -1));
 
         jTabbedPane1.addTab("BEBIDAS", jPanel2);
 
@@ -660,54 +660,99 @@ public class JPComidaYBebida extends javax.swing.JPanel {
     }//GEN-LAST:event_Tabla_bebidaMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-        try {
-            pst = con.prepareStatement("SELECT * FROM comida WHERE Nombre = ?");
-            pst.setString(1,Nombre_Comida.getText());
-            rs = pst.executeQuery();
-            if(rs.next()){
-                ID_C.setText(rs.getString("ID"));
-                Nombre_Comida.setText(rs.getString("Nombre"));
-                Precio_Comida.setText(rs.getString("Precio"));
-                Descripcion_Comida.setText(rs.getString("Descripcion"));
-            }else{
-                JOptionPane.showMessageDialog(null, "No existe un producto con ese nombre");
+        //Boton buscar de la tabla comida
+        String nc = Nombre_Comida.getText();
+        if("".equals(nc)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
+        }
+        else{
+            try {
+                pst = con.prepareStatement("SELECT * FROM comida WHERE Nombre = ?");
+                pst.setString(1,Nombre_Comida.getText());
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    ID_C.setText(rs.getString("ID"));
+                    Nombre_Comida.setText(rs.getString("Nombre"));
+                    Precio_Comida.setText(rs.getString("Precio"));
+                    Descripcion_Comida.setText(rs.getString("Descripcion"));
+                }else{
+                    JOptionPane.showMessageDialog(null, "No existe un producto con ese nombre");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
-        try{
-            String SQL = "INSERT INTO comida(`Nombre`, `Precio`, `Descripcion`) values(?,?,?);";
-            pst = con.prepareStatement(SQL);
-            //Registra los datos directamente en la tabla de mysql
-            pst.setString(1, Nombre_Comida.getText());
-            pst.setString(2, Precio_Comida.getText());
-            pst.setString(3, Descripcion_Comida.getText());
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Registro excitoso");
-            Vacio();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error de Registro  " +e.getMessage());
+        //boton agregar de la tabla comida
+        String nc = Nombre_Comida.getText();
+        String pc = Precio_Comida.getText();
+        String dc = Descripcion_Comida.getText();
+        String idc = ID_C.getText();
+        if("".equals(nc)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
-        MD();
+        if("".equals(pc)){
+            JOptionPane.showMessageDialog(null, "El campo de precio esta vacio");
+        }
+        if("".equals(dc)){
+            JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
+        }
+        if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+        }
+        else{
+            try{
+                String SQL = "INSERT INTO comida(`Nombre`, `Precio`, `Descripcion`) values(?,?,?);";
+                pst = con.prepareStatement(SQL);
+                //Registra los datos directamente en la tabla de mysql
+                pst.setString(1, Nombre_Comida.getText());
+                pst.setString(2, Precio_Comida.getText());
+                pst.setString(3, Descripcion_Comida.getText());
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Registro excitoso");
+                Vacio();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error de Registro, campos vacios");
+            }
+            MD();
+        }
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
-        try{
-            String SQL = "update comida set Nombre=?, Precio=?, Descripcion=? where ID=?";
-            pst = con.prepareStatement(SQL);
-            pst.setString(1, Nombre_Comida.getText());
-            pst.setString(2, Precio_Comida.getText());
-            pst.setString(3, Descripcion_Comida.getText());
-            pst.setInt(4, Integer.parseInt(ID_C.getText()));
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Modificación excitosa");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al modificar  " +e.getMessage());
+        //boton modificar de comida
+        String nc = Nombre_Comida.getText();
+        String pc = Precio_Comida.getText();
+        String dc = Descripcion_Comida.getText();
+        String idc = ID_C.getText();
+        if("".equals(nc)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
-        MD();
+        if("".equals(pc)){
+            JOptionPane.showMessageDialog(null, "El campo de precio esta vacio");
+        }
+        if("".equals(dc)){
+            JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
+        }
+        if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+        }
+        else{
+            try{
+                String SQL = "update comida set Nombre=?, Precio=?, Descripcion=? where ID=?";
+                pst = con.prepareStatement(SQL);
+                pst.setString(1, Nombre_Comida.getText());
+                pst.setString(2, Precio_Comida.getText());
+                pst.setString(3, Descripcion_Comida.getText());
+                pst.setInt(4, Integer.parseInt(ID_C.getText()));
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Modificación excitosa");
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error al modificar, registro no encontrado");
+            }
+            MD();
+        }
     }//GEN-LAST:event_btnModificarMouseClicked
 
     private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
@@ -717,17 +762,23 @@ public class JPComidaYBebida extends javax.swing.JPanel {
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
        //Elimina un registro segun su ID
-        try{
-            pst = con.prepareStatement("DELETE FROM comida WHERE ID=?");
-            pst.setInt(1, Integer.parseInt(ID_C.getText()));
-            int n = pst.executeUpdate();
-            if (n >= 0){
-                 JOptionPane.showMessageDialog(null, "Registro eliminado");
-            }
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
+       String idc = ID_C.getText();
+       if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }
-        MD();
+        else{
+            try{
+                pst = con.prepareStatement("DELETE FROM comida WHERE ID=?");
+                pst.setInt(1, Integer.parseInt(ID_C.getText()));
+                int n = pst.executeUpdate();
+                if (n >= 0){
+                    JOptionPane.showMessageDialog(null, "Registro eliminado");
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error al eliminar, registro no encontrado");
+            }
+            MD();
+        }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
@@ -771,53 +822,95 @@ public class JPComidaYBebida extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarMouseExited
 
     private void btnBuscarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarBMouseClicked
-        try {
-            pst = con.prepareStatement("SELECT * FROM bebidas WHERE Nombre = ?");
-            pst.setString(1,Nombre_Bebida.getText());
-            rs = pst.executeQuery();
-            if(rs.next()){
-                ID_B.setText(rs.getString("ID"));
-                Nombre_Bebida.setText(rs.getString("Nombre"));
-                Precio_Bebida.setText(rs.getString("Precio"));
-                Descripcion_Bebida.setText(rs.getString("Descripcion"));
-            }else{
-                JOptionPane.showMessageDialog(null, "No existe un producto con ese nombre");
+        String nb = Nombre_Bebida.getText();
+        if("".equals(nb)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
+        }
+        else{
+            try {
+                pst = con.prepareStatement("SELECT * FROM bebidas WHERE Nombre = ?");
+                pst.setString(1,Nombre_Bebida.getText());
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    ID_B.setText(rs.getString("ID"));
+                    Nombre_Bebida.setText(rs.getString("Nombre"));
+                    Precio_Bebida.setText(rs.getString("Precio"));
+                    Descripcion_Bebida.setText(rs.getString("Descripcion"));
+                }else{
+                    JOptionPane.showMessageDialog(null, "No existe un producto con ese nombre");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnBuscarBMouseClicked
 
     private void btnAgregarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarBMouseClicked
-        try{
-            String SQL = "INSERT INTO bebidas(`Nombre`, `Precio`, `Descripcion`) values(?,?,?);";
-            pst = con.prepareStatement(SQL);
-            //Registra los datos directamente en la tabla de mysql
-            pst.setString(1, Nombre_Bebida.getText());
-            pst.setString(2, Precio_Bebida.getText());
-            pst.setString(3, Descripcion_Bebida.getText());
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Registro excitoso");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error de Registro  " +e.getMessage());
+        String nc = Nombre_Bebida.getText();
+        String pc = Precio_Bebida.getText();
+        String dc = Descripcion_Bebida.getText();
+        String idc = ID_B.getText();
+        if("".equals(nc)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
-        MD();
+        if("".equals(pc)){
+            JOptionPane.showMessageDialog(null, "El campo de precio esta vacio");
+        }
+        if("".equals(dc)){
+            JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
+        }
+        if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+        }
+        else{
+            try{
+                String SQL = "INSERT INTO bebidas(`Nombre`, `Precio`, `Descripcion`) values(?,?,?);";
+                pst = con.prepareStatement(SQL);
+                //Registra los datos directamente en la tabla de mysql
+                pst.setString(1, Nombre_Bebida.getText());
+                pst.setString(2, Precio_Bebida.getText());
+                pst.setString(3, Descripcion_Bebida.getText());
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Registro excitoso");
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error de Registro, campos vacios");
+            }
+            MD();
+        }
     }//GEN-LAST:event_btnAgregarBMouseClicked
 
     private void btnModificarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarBMouseClicked
-        try{
-            String SQL = "update bebidas set Nombre=?, Precio=?, Descripcion=? where ID=?";
-            pst = con.prepareStatement(SQL);
-            pst.setString(1, Nombre_Bebida.getText());
-            pst.setString(2, Precio_Bebida.getText());
-            pst.setString(3, Descripcion_Bebida.getText());
-            pst.setInt(4, Integer.parseInt(ID_B.getText()));
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Modificación excitosa");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al modificar  " +e.getMessage());
+        String nc = Nombre_Bebida.getText();
+        String pc = Precio_Bebida.getText();
+        String dc = Descripcion_Bebida.getText();
+        String idc = ID_B.getText();
+        if("".equals(nc)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
-        MD();
+        if("".equals(pc)){
+            JOptionPane.showMessageDialog(null, "El campo de precio esta vacio");
+        }
+        if("".equals(dc)){
+            JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
+        }
+        if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+        }
+        else{
+            try{
+                String SQL = "update bebidas set Nombre=?, Precio=?, Descripcion=? where ID=?";
+                pst = con.prepareStatement(SQL);
+                pst.setString(1, Nombre_Bebida.getText());
+                pst.setString(2, Precio_Bebida.getText());
+                pst.setString(3, Descripcion_Bebida.getText());
+                pst.setInt(4, Integer.parseInt(ID_B.getText()));
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Modificación excitosa");
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error al modificar, campos vacios");
+            }
+            MD();
+        }
     }//GEN-LAST:event_btnModificarBMouseClicked
 
     private void btnClearBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearBMouseClicked
@@ -826,17 +919,23 @@ public class JPComidaYBebida extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearBMouseClicked
 
     private void btnEliminarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarBMouseClicked
-        try{//Elimina un registro segun su ID
-            pst = con.prepareStatement("DELETE FROM bebidas WHERE ID=?;");
-            pst.setInt(1, Integer.parseInt(ID_B.getText()));
-            int n = pst.executeUpdate();
-            if (n >= 0){
-                 JOptionPane.showMessageDialog(null, "Registro eliminado");
-            }
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
+        String idb = ID_B.getText();
+        if("".equals(idb)){
+            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }
-        MD();
+        else{
+            try{//Elimina un registro segun su ID
+                pst = con.prepareStatement("DELETE FROM bebidas WHERE ID=?;");
+                pst.setInt(1, Integer.parseInt(ID_B.getText()));
+                int n = pst.executeUpdate();
+                if (n >= 0){
+                    JOptionPane.showMessageDialog(null, "Registro eliminado");
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error al eliminar, registro no encontrado");
+            }
+            MD();
+        }
     }//GEN-LAST:event_btnEliminarBMouseClicked
 
     private void btnBuscarBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarBMouseEntered
@@ -915,7 +1014,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         Tabla_comida.setModel(modelo_comida);
         Tabla_bebida.setModel(modelo_bebida);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos "+ e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos");
         }
     }
     

@@ -449,7 +449,7 @@ public class JPComanda extends javax.swing.JPanel {
             C_C1.setText(null);
             C_B1.setText(null);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error de Registro ");
+            JOptionPane.showMessageDialog(null, "Error de Registro");
         }
         MD();
     }//GEN-LAST:event_B_sig_OMouseClicked

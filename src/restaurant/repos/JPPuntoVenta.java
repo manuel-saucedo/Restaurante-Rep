@@ -377,7 +377,7 @@ public class JPPuntoVenta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-         //Muestra todos los datos relacionados con un cliente especifico en la tabla de productos
+        //Muestra todos los datos relacionados con un cliente especifico en la tabla de productos
         String Cl = Cliente.getText();
         String Fe = Fecha.getText();
         String Ho = Hora.getText();
@@ -387,27 +387,38 @@ public class JPPuntoVenta extends javax.swing.JPanel {
         modelo_productos = new DefaultTableModel(null,CamposP);//Modelo para visualizar la tabla de productos
         //Comando de sql para visualizar todos los regitros de dicha tabla
         //SELECT `Comida`, `Cantidad_Comida`, comida.Precio, `Bebida`, `Cantidad_Bebida`, bebidas.Precio FROM comanda, comida, bebidas WHERE Cliente='Damian' AND Fecha='22/11' AND Hora='11' AND comida.Nombre=comanda.Comida AND bebidas.Nombre=comanda.Bebida GROUP BY Comida;
-        String SQL = "SELECT `Comida`, `Cantidad_Comida`, comida.Precio, `Bebida`, `Cantidad_Bebida`, bebidas.Precio FROM comanda, comida, bebidas WHERE Cliente='"
-                +Cl+"' AND Fecha='"+Fe+"' AND Hora='"+Ho
-                +"' AND comida.Nombre=comanda.Comida AND bebidas.Nombre=comanda.Bebida GROUP BY Comida;";
-        try{
-            //Agrega los registros de un cliente en especifico de la tabla de comanda de sql a la tabla
-            ST2 = con.createStatement();
-            RS2 = ST2.executeQuery(SQL);
-            while (RS2.next()){
-                //Titulos de la base de datos
-                RegistroP[0]= RS2.getString("Comida");
-                RegistroP[1]= RS2.getString("Cantidad_Comida");
-                RegistroP[2]= RS2.getString("Precio");
-                RegistroP[3]= RS2.getString("Bebida");
-                RegistroP[4]= RS2.getString("Cantidad_Bebida");
-                RegistroP[5]= RS2.getString("Precio");
-                modelo_productos.addRow(RegistroP);
+        if("".equals(Cl)){
+            JOptionPane.showMessageDialog(null, "El campo de cliente esta vacio");
+        }
+        if("".equals(Fe)){
+            JOptionPane.showMessageDialog(null, "El campo de fecha esta vacio");
+        }
+        if("".equals(Ho)){
+            JOptionPane.showMessageDialog(null, "El campo de hora esta vacio");
+        }
+        else{
+            String SQL = "SELECT `Comida`, `Cantidad_Comida`, comida.Precio, `Bebida`, `Cantidad_Bebida`, bebidas.Precio FROM comanda, comida, bebidas WHERE Cliente='"
+                    +Cl+"' AND Fecha='"+Fe+"' AND Hora='"+Ho
+                    +"' AND comida.Nombre=comanda.Comida AND bebidas.Nombre=comanda.Bebida GROUP BY Comida;";
+            try{
+                //Agrega los registros de un cliente en especifico de la tabla de comanda de sql a la tabla
+                ST2 = con.createStatement();
+                RS2 = ST2.executeQuery(SQL);
+                while (RS2.next()){
+                    //Titulos de la base de datos
+                    RegistroP[0]= RS2.getString("Comida");
+                    RegistroP[1]= RS2.getString("Cantidad_Comida");
+                    RegistroP[2]= RS2.getString("Precio");
+                    RegistroP[3]= RS2.getString("Bebida");
+                    RegistroP[4]= RS2.getString("Cantidad_Bebida");
+                    RegistroP[5]= RS2.getString("Precio");
+                    modelo_productos.addRow(RegistroP);
+                }
+            //Coloca el modelos hechos anteriormente a las tablas
+            TablaProductos.setModel(modelo_productos);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error al Mostrar Datos");
             }
-        //Coloca el modelos hechos anteriormente a las tablas
-        TablaProductos.setModel(modelo_productos);
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos "+ e.getMessage());
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
@@ -418,12 +429,19 @@ public class JPPuntoVenta extends javax.swing.JPanel {
     private void btnVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseClicked
         String PC = Pago_con.getText();
         String TT = Total.getText();
-        int CT = Integer.parseInt(PC)-Integer.parseInt(TT);//Saca el cambio de con cuanto pago menos el total a pagar
-        if(CT < 0){
-            JOptionPane.showMessageDialog(null, "Dinero insuficiente");
-        }
-        else{
-            Cambio.setText(""+CT);//Muestra el cambio
+        switch (PC){
+                case ""://En caso de tener el campo vacio
+                    JOptionPane.showMessageDialog(null, "El campo esta vacio");
+                break;
+                
+                default:
+                    int CT = Integer.parseInt(PC)-Integer.parseInt(TT);//Saca el cambio de con cuanto pago menos el total a pagar
+                    if(CT < 0){
+                        JOptionPane.showMessageDialog(null, "Dinero insuficiente");
+                    }
+                    else{
+                        Cambio.setText(""+CT);//Muestra el cambio
+                    }
         }
     }//GEN-LAST:event_btnVentaMouseClicked
 
@@ -452,27 +470,38 @@ public class JPPuntoVenta extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarMouseExited
 
     private void btnOkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseClicked
-        //IVA = x1.16
-        int sum = 0;
-        int sum2 = 0;
-        //Subtotal.setText((String)TablaProductos.getValueAt(0, 1));
-        for(int i=0; i<TablaProductos.getRowCount(); i++){
-            int Can = Integer.parseInt((String)TablaProductos.getValueAt(i, 1));//Cantidad
-            int Pre = Integer.parseInt((String)TablaProductos.getValueAt(i, 2));//Precio
-            int T = Can * Pre;//Total
-            sum = sum + T;//Suma para el total a pagar
+        try{
+            //IVA = x1.16
+            int sum = 0;
+            int sum2 = 0;
+            //Subtotal.setText((String)TablaProductos.getValueAt(0, 1));
+            switch(TablaProductos.getRowCount()){
+                case 0:
+                    JOptionPane.showMessageDialog(null, "Error, Tabla vacia");
+                break;
+                
+                default:
+                    for(int i=0; i<TablaProductos.getRowCount(); i++){
+                        int Can = Integer.parseInt((String)TablaProductos.getValueAt(i, 1));//Cantidad
+                        int Pre = Integer.parseInt((String)TablaProductos.getValueAt(i, 2));//Precio
+                        int T = Can * Pre;//Total
+                        sum = sum + T;//Suma para el total a pagar
+                    }
+                    for(int i=0; i<TablaProductos.getRowCount(); i++){
+                        int Can = Integer.parseInt((String)TablaProductos.getValueAt(i, 4));//Cantidad
+                        int Pre = Integer.parseInt((String)TablaProductos.getValueAt(i, 5));//Precio
+                        int T = Can * Pre;//Total
+                        sum2 = sum2 + T;//Suma para el total a pagar
+                    }
+                    int S = sum + sum2;
+                    Subtotal.setText(""+S);//Muestra el total a pagar sin el IVA
+                    double ST = S * 1.16;//Añade el IVA
+                    int To = (int) Math.round(ST);//Total ya con IVA
+                    Total.setText(""+To);//Muestra el total ya con el IVA agregado
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error, Tabla vacia");
         }
-        for(int i=0; i<TablaProductos.getRowCount(); i++){
-            int Can = Integer.parseInt((String)TablaProductos.getValueAt(i, 4));//Cantidad
-            int Pre = Integer.parseInt((String)TablaProductos.getValueAt(i, 5));//Precio
-            int T = Can * Pre;//Total
-            sum2 = sum2 + T;//Suma para el total a pagar
-        }
-        int S = sum + sum2;
-        Subtotal.setText(""+S);//Muestra el total a pagar sin el IVA
-        double ST = S * 1.16;//Añade el IVA
-        int To = (int) Math.round(ST);//Total ya con IVA
-        Total.setText(""+To);//Muestra el total ya con el IVA agregado
     }//GEN-LAST:event_btnOkMouseClicked
 
     private void btnOkMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseEntered

@@ -477,7 +477,7 @@ Statement st;
     public void eliminarRegistro(){
         int filaSeleccionada = TableEm.getSelectedRow();
          if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Campos vacios");
+             JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }else{    
         try{
             String SQL = "delete from empleados where ID="+TableEm.getValueAt(filaSeleccionada,0);
@@ -503,7 +503,7 @@ Statement st;
     public void insertarDatos(){
         String SQL = "insert into empleados (ID,Nombre,Apellido_P, Apellido_M, Telefono, Direccion, ID_Puesto) values(?,?,?,?,?,?,?)";    
          if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Campos vacios");
+             JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }else{    
         try{
         ps = con.prepareStatement(SQL);        
@@ -526,7 +526,7 @@ Statement st;
 public void actualizarDatos(){
      String SQL = "update empleados set  Nombre=?,Apellido_P=?,Apellido_M=?,Telefono=?,Direccion=?,ID_Puesto=? where ID=?";
      if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Campos vacios");
+             JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }else{    
      try{
        ps = con.prepareStatement(SQL);
@@ -589,7 +589,7 @@ public void actualizarDatos(){
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
         if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Identificador ID no encontrado");
+             JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }else{
         try {
         ps = con.prepareStatement("SELECT * FROM empleados WHERE ID = ?");
@@ -604,7 +604,7 @@ public void actualizarDatos(){
             txtDireE.setText(rs.getString("Direccion"));
             txtPuestoE.setText(rs.getString("ID_Puesto"));
         }else{
-            JOptionPane.showMessageDialog(null, "No existe un Empledo con ese Nombre");
+            JOptionPane.showMessageDialog(null, "No existe un Empleado con ese Nombre");
         }
     } catch (SQLException ex) {
         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);

@@ -430,6 +430,35 @@ public class JPComanda extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_sig_OMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_sig_OMouseClicked
+        String c = Comida1.getText();
+        String cc =  C_C1.getText();
+        String b = Bebida1.getText();
+        String cb = C_B1.getText();
+        String f = Fecha1.getText();
+        String h = Hora1.getText();
+        String cl = Cliente1.getText();
+        if("".equals(c)){
+            JOptionPane.showMessageDialog(null, "El campo de la comida esta vacio");
+        }
+        if("".equals(b)){
+            JOptionPane.showMessageDialog(null, "El campo de la bebida esta vacio");
+        }
+        if("".equals(cc)){
+            JOptionPane.showMessageDialog(null, "El campo de la cantidad de comida esta vacio");
+        }
+        if("".equals(cb)){
+            JOptionPane.showMessageDialog(null, "El campo de la cantidad de bebida esta vacio");
+        }
+        if("".equals(f)){
+            JOptionPane.showMessageDialog(null, "El campo de la fecha esta vacio");
+        }
+        if("".equals(h)){
+            JOptionPane.showMessageDialog(null, "El campo de la hora esta vacio");
+        }
+        if("".equals(cl)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre del cliente esta vacia");
+        }
+        else{
         try{
             String SQL = "INSERT INTO comanda(`Comida`, `Cantidad_Comida`, `Bebida`, `Cantidad_Bebida`, `Fecha`, `Hora`, `Cliente`) values(?,?,?,?,?,?,?);";
             pst = con.prepareStatement(SQL);
@@ -449,9 +478,10 @@ public class JPComanda extends javax.swing.JPanel {
             C_C1.setText(null);
             C_B1.setText(null);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error de Registro");
+            JOptionPane.showMessageDialog(null, "Error al registrar");
         }
         MD();
+        }
     }//GEN-LAST:event_B_sig_OMouseClicked
 
     private void B_sig_OMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_sig_OMouseEntered
@@ -499,9 +529,15 @@ public class JPComanda extends javax.swing.JPanel {
     }//GEN-LAST:event_TablaMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-        try {
-            pst = con.prepareStatement("SELECT * FROM comanda WHERE ID = ?");
-            pst.setString(1,ID_O.getText());
+        String nb = Cliente1.getText();
+        if("".equals(nb)){
+            JOptionPane.showMessageDialog(null, "El campo del cliente esta vacio");
+        }
+        else{
+            buscar(nb);
+        /*try {
+            pst = con.prepareStatement("SELECT * FROM comanda WHERE Cliente = ?");
+            pst.setString(1, ID_O.getText());
             rs = pst.executeQuery();
             if(rs.next()){
                 ID_O.setText(rs.getString("ID"));
@@ -517,10 +553,16 @@ public class JPComanda extends javax.swing.JPanel {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
+        String idc = ID_O.getText();
+        if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
+        }
+        else{
         try{
             String SQL = "update comanda set Comida=?, Cantidad_Comida=?, Bebida=?, Cantidad_Bebida=?, Fecha=?, Hora=?, Cliente=? where ID=?";
             pst = con.prepareStatement(SQL);
@@ -538,11 +580,17 @@ public class JPComanda extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Error de Actualizacion");
         }
         MD();
-        
+        Vacio();
+        }
         
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        String idc = ID_O.getText();
+        if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio o no selecciono ningun registro");
+        }
+        else{
         try{
             pst = con.prepareStatement("DELETE FROM comanda WHERE ID=?");
             pst.setInt(1, Integer.parseInt(ID_O.getText()));
@@ -551,9 +599,10 @@ public class JPComanda extends javax.swing.JPanel {
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error al Eliminar ");
+             JOptionPane.showMessageDialog(null, "Error al Eliminar, registro eliminado");
         }
         MD();
+        }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
@@ -618,7 +667,36 @@ public class JPComanda extends javax.swing.JPanel {
         //Coloca el modelos hechos anteriormente a las tablas
         Tabla.setModel(modelo);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos "+ e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos");
+        }
+    }
+    
+    public void buscar(String cli){
+        //Nombre de los campos en la tabla de Comanda
+        String[]Campos = {"ID", "Comdia", "Cantidad_Comida", "Bebida", "Cantidad_Bebida", "Fecha", "Hora", "Cliente"};
+        String[]Registro = new String[8];//Espacio para registrar los campos de la tabla
+        modelo = new DefaultTableModel(null,Campos);//Modelo para visualizar la tabla de comida
+        String SQL = "SELECT * FROM comanda WHERE Cliente='"+cli+"';";//Comando de sql para visualizar todos los regitros de dicha tabla
+        try{
+            //Agrega los registros de la tabla comida de sql a la tabla
+            st = con.createStatement();
+            rs = st.executeQuery(SQL);
+            while (rs.next()){
+                //Titulos de la base de datos
+                Registro[0]= rs.getString("ID");
+                Registro[1]= rs.getString("Comida");
+                Registro[2]= rs.getString("Cantidad_Comida");
+                Registro[3]= rs.getString("Bebida");
+                Registro[4]= rs.getString("Cantidad_Bebida");
+                Registro[5]= rs.getString("Fecha");
+                Registro[6]= rs.getString("Hora");
+                Registro[7]= rs.getString("Cliente");
+                modelo.addRow(Registro);
+            }
+        //Coloca el modelos hechos anteriormente a las tablas
+        Tabla.setModel(modelo);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos");
         }
     }
     

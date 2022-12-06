@@ -171,16 +171,16 @@ public class JPPuntoVenta extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("CANCELAR");
+        jLabel8.setText("LIMPIAR");
 
         javax.swing.GroupLayout btnCancelarLayout = new javax.swing.GroupLayout(btnCancelar);
         btnCancelar.setLayout(btnCancelarLayout);
         btnCancelarLayout.setHorizontalGroup(
             btnCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCancelarLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel8)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         btnCancelarLayout.setVerticalGroup(
             btnCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,7 +431,7 @@ public class JPPuntoVenta extends javax.swing.JPanel {
         String TT = Total.getText();
         switch (PC){
                 case ""://En caso de tener el campo vacio
-                    JOptionPane.showMessageDialog(null, "El campo esta vacio");
+                    JOptionPane.showMessageDialog(null, "Ingrese la cantidad con la que pagará en el campo: Pagar con");
                 break;
                 
                 default:
@@ -477,7 +477,7 @@ public class JPPuntoVenta extends javax.swing.JPanel {
             //Subtotal.setText((String)TablaProductos.getValueAt(0, 1));
             switch(TablaProductos.getRowCount()){
                 case 0:
-                    JOptionPane.showMessageDialog(null, "Error, Tabla vacia");
+                    JOptionPane.showMessageDialog(null, "Tabla vacia, favor de consultar el pedido con los campos de abajo: cliente, fecha, hora");
                 break;
                 
                 default:
@@ -500,7 +500,7 @@ public class JPPuntoVenta extends javax.swing.JPanel {
                     Total.setText(""+To);//Muestra el total ya con el IVA agregado
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error, Tabla vacia");
+            JOptionPane.showMessageDialog(null, "Error");
         }
     }//GEN-LAST:event_btnOkMouseClicked
 

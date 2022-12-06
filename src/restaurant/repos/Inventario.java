@@ -525,7 +525,7 @@ DefaultTableModel modelo;
     
     public void insertarDatos(){
      if (txtIDI.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Campos vacios");
+             JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }else{    
     try{
         String SQL = "insert into inventario(ID,Nombre, Cantidadxgr_ml, Precioxgr_ml, Proveedor) values(?,?,?,?,?)";
@@ -553,7 +553,7 @@ DefaultTableModel modelo;
 }
         public void actualizarDatos(){
              if (txtIDI.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Campos vacios");
+             JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }else{
     try{
         String SQL = "update inventario set Nombre=?,Cantidadxgr_ml=?,Precioxgr_ml=?,Proveedor=? where ID=?";
@@ -584,7 +584,7 @@ DefaultTableModel modelo;
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error de eliminacion ");
+             JOptionPane.showMessageDialog(null, "Error de eliminacion, registro no encontrado");
         }
     }
     void setColor(JPanel panel){

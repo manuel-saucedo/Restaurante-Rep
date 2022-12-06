@@ -380,7 +380,7 @@ Statement st;
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
          if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error al Buscar Identificador ID no encontrado");
+             JOptionPane.showMessageDialog(null, "Error al Buscar Identificador, ID no encontrado");
         }else{    
         try {
         ps = con.prepareStatement("SELECT * FROM proveedores WHERE ID = ?");
@@ -453,7 +453,7 @@ Statement st;
     
      public void eliminarRegistro(){
           if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error al eliminar Registro No encontrado");
+             JOptionPane.showMessageDialog(null, "Error al eliminar, Registro No encontrado");
         }else{    
         int filaSeleccionada = Table.getSelectedRow();
         try{
@@ -482,7 +482,7 @@ Statement st;
 
         public void insertarDatos(){
           if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error al Insertar algún campo esta vacio");
+             JOptionPane.showMessageDialog(null, "Error al Insertar, El campo del identificador esta vacio");
         }else{       
         try{
         String SQL = "insert into proveedores (ID,Nombre_legal,Nombre_comercial, Materia_prima,Cantidadxunidad, Precio_unitario, Precio_total,Telefono) values(?,?,?,?,?,?,?,?)";    

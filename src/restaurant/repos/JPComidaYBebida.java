@@ -689,7 +689,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         String nc = Nombre_Comida.getText();
         String pc = Precio_Comida.getText();
         String dc = Descripcion_Comida.getText();
-        String idc = ID_C.getText();
         if("".equals(nc)){
             JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
@@ -698,9 +697,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         }
         if("".equals(dc)){
             JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
-        }
-        if("".equals(idc)){
-            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }
         else{
             try{
@@ -714,7 +710,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Registro excitoso");
                 Vacio();
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Error de Registro, campos vacios");
+                JOptionPane.showMessageDialog(null, "Error de Registro, el campo de precio solo puede llevar numeros");
             }
             MD();
         }
@@ -722,21 +718,9 @@ public class JPComidaYBebida extends javax.swing.JPanel {
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
         //boton modificar de comida
-        String nc = Nombre_Comida.getText();
-        String pc = Precio_Comida.getText();
-        String dc = Descripcion_Comida.getText();
         String idc = ID_C.getText();
-        if("".equals(nc)){
-            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
-        }
-        if("".equals(pc)){
-            JOptionPane.showMessageDialog(null, "El campo de precio esta vacio");
-        }
-        if("".equals(dc)){
-            JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
-        }
         if("".equals(idc)){
-            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+            JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
         }
         else{
             try{
@@ -761,10 +745,10 @@ public class JPComidaYBebida extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-       //Elimina un registro segun su ID
-       String idc = ID_C.getText();
-       if("".equals(idc)){
-            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+        //Elimina un registro segun su ID
+        String idc = ID_C.getText();
+        if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio o no selecciono ningun registro");
         }
         else{
             try{
@@ -849,7 +833,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         String nc = Nombre_Bebida.getText();
         String pc = Precio_Bebida.getText();
         String dc = Descripcion_Bebida.getText();
-        String idc = ID_B.getText();
         if("".equals(nc)){
             JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
@@ -858,9 +841,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         }
         if("".equals(dc)){
             JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
-        }
-        if("".equals(idc)){
-            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }
         else{
             try{
@@ -873,28 +853,16 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Registro excitoso");
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Error de Registro, campos vacios");
+                JOptionPane.showMessageDialog(null, "Error de Registro, el campo de precio solo puede llevar numeros");
             }
             MD();
         }
     }//GEN-LAST:event_btnAgregarBMouseClicked
 
     private void btnModificarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarBMouseClicked
-        String nc = Nombre_Bebida.getText();
-        String pc = Precio_Bebida.getText();
-        String dc = Descripcion_Bebida.getText();
         String idc = ID_B.getText();
-        if("".equals(nc)){
-            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
-        }
-        if("".equals(pc)){
-            JOptionPane.showMessageDialog(null, "El campo de precio esta vacio");
-        }
-        if("".equals(dc)){
-            JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
-        }
         if("".equals(idc)){
-            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+            JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
         }
         else{
             try{
@@ -921,7 +889,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
     private void btnEliminarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarBMouseClicked
         String idb = ID_B.getText();
         if("".equals(idb)){
-            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio o no selecciono ningun registro");
         }
         else{
             try{//Elimina un registro segun su ID

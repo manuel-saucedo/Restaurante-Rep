@@ -22,7 +22,7 @@ public Connection conexion(){
    try{
         Class.forName("com.mysql.jdbc.Driver");
         con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost/restaurant_disi","root","");
-        JOptionPane.showMessageDialog(null, "Conexion exitosa");
+       // JOptionPane.showMessageDialog(null, "Conexion exitosa");
     }catch(Exception e){
          JOptionPane.showMessageDialog(null, "Error de conexion " + e.getMessage());
     }

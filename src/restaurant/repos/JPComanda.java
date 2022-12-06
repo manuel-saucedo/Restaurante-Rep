@@ -449,7 +449,7 @@ public class JPComanda extends javax.swing.JPanel {
             C_C1.setText(null);
             C_B1.setText(null);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error de Registro  " +e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error de Registro ");
         }
         MD();
     }//GEN-LAST:event_B_sig_OMouseClicked
@@ -535,9 +535,11 @@ public class JPComanda extends javax.swing.JPanel {
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error de Actualizacion  " +e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error de Actualizacion");
         }
         MD();
+        
+        
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
@@ -549,7 +551,7 @@ public class JPComanda extends javax.swing.JPanel {
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
+             JOptionPane.showMessageDialog(null, "Error al Eliminar ");
         }
         MD();
     }//GEN-LAST:event_btnEliminarMouseClicked

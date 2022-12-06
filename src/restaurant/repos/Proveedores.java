@@ -242,10 +242,10 @@ Statement st;
         btnActualizar.setLayout(btnActualizarLayout);
         btnActualizarLayout.setHorizontalGroup(
             btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnActualizarLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+            .addGroup(btnActualizarLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(jLabel11)
-                .addGap(18, 18, 18))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         btnActualizarLayout.setVerticalGroup(
             btnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,7 +379,10 @@ Statement st;
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
-           try {
+         if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error al Buscar Identificador ID no encontrado");
+        }else{    
+        try {
         ps = con.prepareStatement("SELECT * FROM proveedores WHERE ID = ?");
         ps.setString(1,txtID.getText());
         rs = ps.executeQuery();
@@ -397,6 +400,7 @@ Statement st;
         }
     } catch (SQLException ex) {
         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
@@ -434,6 +438,7 @@ Statement st;
 
     private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
         limpiarCajas();
+        JOptionPane.showMessageDialog(null, "Se limpiaron los campos");
     }//GEN-LAST:event_btnLimpiarMouseClicked
 
     private void btnLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseEntered
@@ -447,6 +452,9 @@ Statement st;
     //Metodos
     
      public void eliminarRegistro(){
+          if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error al eliminar Registro No encontrado");
+        }else{    
         int filaSeleccionada = Table.getSelectedRow();
         try{
             String SQL = "delete from proveedores where ID="+Table.getValueAt(filaSeleccionada,0);
@@ -458,6 +466,7 @@ Statement st;
         }catch(Exception e){
              JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
         }
+          }
     }
     public void limpiarCajas(){
    
@@ -472,6 +481,9 @@ Statement st;
 }
 
         public void insertarDatos(){
+          if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error al Insertar algún campo esta vacio");
+        }else{       
         try{
         String SQL = "insert into proveedores (ID,Nombre_legal,Nombre_comercial, Materia_prima,Cantidadxunidad, Precio_unitario, Precio_total,Telefono) values(?,?,?,?,?,?,?,?)";    
         ps = con.prepareStatement(SQL);        
@@ -489,11 +501,15 @@ Statement st;
     }catch(Exception e){
         JOptionPane.showMessageDialog(null, "Error de Registro  " +e.getMessage());
     }
+          }
 }
   
         public void actualizarDatos(){
      String SQL = "update proveedores set  Nombre_legal=?,Nombre_comercial=?,Materia_prima=?,Cantidadxunidad=?,Precio_unitario=?,Precio_total=?,Telefono =? where ID=?";
-    try{
+     if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error al actualizar, registro no encontrado");
+        }else{    
+     try{
        ps = con.prepareStatement(SQL);
 
         //Envia lo que se ingresa en el cuadro de texto
@@ -509,6 +525,7 @@ Statement st;
         JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
     }catch(Exception e){
         JOptionPane.showMessageDialog(null, "Error de Actualizacion  " +e.getMessage());
+    }
     }
 }
   

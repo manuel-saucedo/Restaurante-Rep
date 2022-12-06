@@ -35,6 +35,7 @@ ResultSet rs;
 Statement st;
     public Empleados() {
         initComponents();
+        mostrarDatos();
     }
 
     /**
@@ -475,6 +476,9 @@ Statement st;
     
     public void eliminarRegistro(){
         int filaSeleccionada = TableEm.getSelectedRow();
+         if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Campos vacios");
+        }else{    
         try{
             String SQL = "delete from empleados where ID="+TableEm.getValueAt(filaSeleccionada,0);
             Statement st = con.createStatement();
@@ -483,8 +487,9 @@ Statement st;
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
+             JOptionPane.showMessageDialog(null, "Error al Eliminar ");
         }
+         }
     }
     public void limpiarCajas(){
     txtID.setText("");
@@ -497,6 +502,9 @@ Statement st;
 }
     public void insertarDatos(){
         String SQL = "insert into empleados (ID,Nombre,Apellido_P, Apellido_M, Telefono, Direccion, ID_Puesto) values(?,?,?,?,?,?,?)";    
+         if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Campos vacios");
+        }else{    
         try{
         ps = con.prepareStatement(SQL);        
 //PreparedStatement pst = con.prepareStatement(SQL);
@@ -511,12 +519,16 @@ Statement st;
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Registro excitoso");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Registro  " +e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error de Registro ");
     }
+         }
 }
 public void actualizarDatos(){
      String SQL = "update empleados set  Nombre=?,Apellido_P=?,Apellido_M=?,Telefono=?,Direccion=?,ID_Puesto=? where ID=?";
-    try{
+     if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Campos vacios");
+        }else{    
+     try{
        ps = con.prepareStatement(SQL);
 
         //Envia lo que se ingresa en el cuadro de texto
@@ -530,8 +542,9 @@ public void actualizarDatos(){
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Actualizacion  " +e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error de Actualizacion");
     }
+     }     
 }
     public void mostrarDatos(){
         //Titulos de la Tabla
@@ -555,7 +568,7 @@ public void actualizarDatos(){
        }
        TableEm.setModel(modelo);
    }catch(Exception e){
-       JOptionPane.showMessageDialog(null, "Error al Mostrar Datos "+ e.getMessage());
+       JOptionPane.showMessageDialog(null, "Error al Mostrar Datos ");
    }
     }
     
@@ -575,6 +588,9 @@ public void actualizarDatos(){
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
+        if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Identificador ID no encontrado");
+        }else{
         try {
         ps = con.prepareStatement("SELECT * FROM empleados WHERE ID = ?");
         ps.setString(1,txtID.getText());
@@ -588,12 +604,12 @@ public void actualizarDatos(){
             txtDireE.setText(rs.getString("Direccion"));
             txtPuestoE.setText(rs.getString("ID_Puesto"));
         }else{
-            JOptionPane.showMessageDialog(null, "No existe un producto con ese nombre");
+            JOptionPane.showMessageDialog(null, "No existe un Empledo con ese Nombre");
         }
     } catch (SQLException ex) {
         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
     }
-    
+        }  
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
@@ -606,6 +622,7 @@ public void actualizarDatos(){
     private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
         // TODO add your handling code here:
         limpiarCajas();
+         JOptionPane.showMessageDialog(null, "Se limpiaron los campos");
     }//GEN-LAST:event_btnLimpiarMouseClicked
 
     private void btnAñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAñadirMouseEntered

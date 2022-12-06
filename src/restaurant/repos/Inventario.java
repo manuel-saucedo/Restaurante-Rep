@@ -53,7 +53,7 @@ DefaultTableModel modelo;
        }
        TableI.setModel(modelo);
    }catch(Exception e){
-       JOptionPane.showMessageDialog(null, "Error al Mostrar Datos "+ e.getMessage());
+       JOptionPane.showMessageDialog(null, "Error al Mostrar Datos ");
    }
     }
 
@@ -105,10 +105,10 @@ DefaultTableModel modelo;
         });
 
         jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        jLabel4.setText("Cantidadxgr_ml:");
+        jLabel4.setText("Cantidad:");
 
         jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        jLabel5.setText("Precioxgr_ml:");
+        jLabel5.setText("Precio:");
 
         jLabel6.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel6.setText("Proveedor:");
@@ -299,7 +299,7 @@ DefaultTableModel modelo;
             .addGroup(btnClearLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel7)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         btnClearLayout.setVerticalGroup(
             btnClearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,18 +326,16 @@ DefaultTableModel modelo;
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                                     .addComponent(txtPrecI, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtCantI))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2)
-                                        .addComponent(jLabel3))
-                                    .addGap(64, 64, 64)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                    .addGap(57, 57, 57)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtCantI)
                                         .addComponent(txtNomI, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                                         .addComponent(txtIDI)))))
                         .addGap(36, 36, 36)
@@ -438,6 +436,11 @@ DefaultTableModel modelo;
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
+        if (txtIDI.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Identificador ID no encontrado");
+        }else{
+            
+        
          try {
             ps = con.prepareStatement("SELECT * FROM inventario WHERE ID = ?");
             ps.setString(1,txtIDI.getText());
@@ -449,11 +452,12 @@ DefaultTableModel modelo;
                 txtPrecI.setText(rs.getString("Precioxgr_ml"));
                 txtProvI.setText(rs.getString("Proveedor"));
             }else{
-                JOptionPane.showMessageDialog(null, "No existe un producto con ese nombre");
+                JOptionPane.showMessageDialog(null, "No existe un producto con esos ");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
         }
+       }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActMouseClicked
@@ -506,6 +510,7 @@ DefaultTableModel modelo;
     private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
         // TODO add your handling code here:
         limpiarCajas();
+        JOptionPane.showMessageDialog(null, "Se limpiaron los campos");
     }//GEN-LAST:event_btnClearMouseClicked
 
     private void btnClearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseEntered
@@ -519,6 +524,9 @@ DefaultTableModel modelo;
     }//GEN-LAST:event_btnClearMouseExited
     
     public void insertarDatos(){
+     if (txtIDI.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Campos vacios");
+        }else{    
     try{
         String SQL = "insert into inventario(ID,Nombre, Cantidadxgr_ml, Precioxgr_ml, Proveedor) values(?,?,?,?,?)";
         PreparedStatement pst = con.prepareStatement(SQL);
@@ -532,8 +540,9 @@ DefaultTableModel modelo;
         pst.executeUpdate();
         JOptionPane.showMessageDialog(null, "Registro excitoso");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Registro  " +e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error de Registro");
     }
+     }
 }
         public void limpiarCajas(){
     txtIDI.setText("");
@@ -543,6 +552,9 @@ DefaultTableModel modelo;
     txtProvI.setText("");
 }
         public void actualizarDatos(){
+             if (txtIDI.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Campos vacios");
+        }else{
     try{
         String SQL = "update inventario set Nombre=?,Cantidadxgr_ml=?,Precioxgr_ml=?,Proveedor=? where ID=?";
         
@@ -555,8 +567,9 @@ DefaultTableModel modelo;
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Actualizacion  " +e.getMessage());
+        JOptionPane.showMessageDialog(null, "Error de Actualizacion ");
     }
+  }
 }        
     
     public void eliminarRegistro(){
@@ -571,7 +584,7 @@ DefaultTableModel modelo;
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
+             JOptionPane.showMessageDialog(null, "Error de eliminacion ");
         }
     }
     void setColor(JPanel panel){

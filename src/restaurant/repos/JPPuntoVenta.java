@@ -460,14 +460,6 @@ public class JPPuntoVenta extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarMouseExited
 
     private void btnOkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOkMouseClicked
-
-    private void btnOkMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOkMouseEntered
-
-    private void btnOkMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseExited
         //IVA = x1.16
         int sum = 0;
         int sum2 = 0;
@@ -489,6 +481,14 @@ public class JPPuntoVenta extends javax.swing.JPanel {
         double ST = S * 1.16;//Añade el IVA
         int To = (int) Math.round(ST);//Total ya con IVA
         Total.setText(""+To);//Muestra el total ya con el IVA agregado
+    }//GEN-LAST:event_btnOkMouseClicked
+
+    private void btnOkMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseEntered
+      setColor(btnOk);
+    }//GEN-LAST:event_btnOkMouseEntered
+
+    private void btnOkMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseExited
+    resetColor(btnOk);
     }//GEN-LAST:event_btnOkMouseExited
     
     public void Vacio(){//Limpia los campos

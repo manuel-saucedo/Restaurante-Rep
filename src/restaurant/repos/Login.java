@@ -100,6 +100,7 @@ public class Login extends javax.swing.JFrame {
         BackGraund.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 450));
 
         Barra.setBackground(new java.awt.Color(255, 255, 255));
+        Barra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 BarraMouseDragged(evt);

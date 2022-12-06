@@ -463,6 +463,7 @@ public class Home extends javax.swing.JFrame {
         BackGraund.add(jbarlat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 640));
 
         jmouse.setBackground(new java.awt.Color(255, 255, 255));
+        jmouse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jmouse.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jmouseMouseDragged(evt);

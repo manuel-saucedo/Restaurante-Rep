@@ -44,7 +44,7 @@ public class Login extends javax.swing.JFrame {
         Barra = new javax.swing.JPanel();
         Leave = new javax.swing.JPanel();
         txtExit = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        btnLogin = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -134,18 +134,18 @@ public class Login extends javax.swing.JFrame {
 
         BackGraund.add(Leave, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 40, 30));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLogin.setBackground(new java.awt.Color(255, 255, 255));
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel1MouseClicked(evt);
+                btnLoginMouseClicked(evt);
             }
         });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/login_circle_icon_206018.png"))); // NOI18N
-        jPanel1.add(jLabel5);
+        btnLogin.add(jLabel5);
 
-        BackGraund.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 60, 40));
+        BackGraund.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 60, 40));
 
         jLabel6.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         jLabel6.setText("INICIAR SESIÓN");
@@ -185,7 +185,7 @@ public class Login extends javax.swing.JFrame {
         txtExit.setForeground(Color.black);
     }//GEN-LAST:event_LeaveMouseExited
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
 
        String user ="admin";
        String pass ="12345";
@@ -199,7 +199,7 @@ public class Login extends javax.swing.JFrame {
        }else{
            JOptionPane.showMessageDialog(this, "Usuario o Contraseña Incorrecto");
        } 
-    }//GEN-LAST:event_jPanel1MouseClicked
+    }//GEN-LAST:event_btnLoginMouseClicked
 
     private void txtuserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtuserMousePressed
         // TODO add your handling code here:
@@ -264,12 +264,12 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel BackGraund;
     private javax.swing.JPanel Barra;
     private javax.swing.JPanel Leave;
+    private javax.swing.JPanel btnLogin;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel txtExit;

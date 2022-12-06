@@ -114,7 +114,7 @@ Statement st;
         });
 
         jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        jLabel8.setText("Direccción:");
+        jLabel8.setText("Dirección:");
 
         jLabel9.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel9.setText("Telefono:");

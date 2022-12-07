@@ -450,25 +450,20 @@ public class JPPuntoVenta extends javax.swing.JPanel {
     private void btnVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseClicked
         String PC = Pago_con.getText();
         String TT = Total.getText();
-        double dpc = Double.parseDouble(PC);
-        double dtt = Double.parseDouble(TT);
-        switch (PC){
-                case ""://En caso de tener el campo vacio
-                    JOptionPane.showMessageDialog(null, "Ingrese la cantidad con la que pagará en el campo: Pagar con");
-                break;
-                
-                default:
-                    try{
-                    double CT = dpc - dtt;//Saca el cambio de con cuanto pago menos el total a pagar
-                    if(CT < 0){
-                        JOptionPane.showMessageDialog(null, "Dinero insuficiente");
-                    }
-                    else{
-                        Cambio.setText(""+CT);//Muestra el cambio
-                    }
-                    }catch(Exception e){
-                        JOptionPane.showMessageDialog(null, "Solo puede poner numeros en el campo de pagar con");
-                    }
+        if("".equals(PC)){
+            JOptionPane.showMessageDialog(null, "Ingrese la cantidad con la que pagará en el campo: Pagar con");
+        }else{
+            //int dpc = Integer.parseInt(PC);
+            //int dtt = Integer.parseInt(TT);
+            double dpc = Double.parseDouble(PC);
+            double dtt = Double.parseDouble(TT);
+            double CT = dpc - dtt;//Saca el cambio de con cuanto pago menos el total a pagar
+            if(CT < 0){
+                JOptionPane.showMessageDialog(null, "Dinero insuficiente");
+             }
+            else{
+                Cambio.setText(""+CT);//Muestra el cambio
+            }
         }
     }//GEN-LAST:event_btnVentaMouseClicked
 

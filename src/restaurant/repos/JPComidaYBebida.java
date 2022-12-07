@@ -45,7 +45,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         Descripcion_Comida = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        ID_C = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Precio_Comida = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -60,6 +59,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        ID_C = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Precio_Bebida = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -69,7 +69,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla_bebida = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        ID_B = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btnBuscarB = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -81,6 +80,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         btnEliminarB = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
+        ID_B = new javax.swing.JLabel();
 
         jTabbedPane1.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
 
@@ -98,8 +98,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel3.setText("ID:");
-
-        ID_C.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel4.setText("Precio:");
@@ -301,6 +299,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        ID_C.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -320,8 +320,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Precio_Comida)
-                    .addComponent(ID_C, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Precio_Comida, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(ID_C, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(82, 82, 82))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(132, 132, 132)
@@ -347,8 +347,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                     .addComponent(Nombre_Comida, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(ID_C, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1)
+                        .addComponent(ID_C, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -411,9 +411,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel7.setText("ID:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
-
-        ID_B.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel2.add(ID_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 240, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel8.setText("Precio:");
@@ -609,6 +606,9 @@ public class JPComidaYBebida extends javax.swing.JPanel {
 
         jPanel2.add(btnEliminarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, -1, -1));
 
+        ID_B.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+        jPanel2.add(ID_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 240, 20));
+
         jTabbedPane1.addTab("BEBIDAS", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -666,7 +666,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
         else{
-            try {
+            buscarcomida(nc);
+            /*try {
                 pst = con.prepareStatement("SELECT * FROM comida WHERE Nombre = ?");
                 pst.setString(1,Nombre_Comida.getText());
                 rs = pst.executeQuery();
@@ -680,7 +681,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
@@ -689,6 +690,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         String nc = Nombre_Comida.getText();
         String pc = Precio_Comida.getText();
         String dc = Descripcion_Comida.getText();
+        String idc = ID_C.getText();
+        if("".equals(idc)){
         if("".equals(nc)){
             JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
@@ -697,6 +700,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         }
         if("".equals(dc)){
             JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
+        }
+        if("".equals(dc) || "".equals(pc) || "".equals(nc)){
         }
         else{
             try{
@@ -714,13 +719,32 @@ public class JPComidaYBebida extends javax.swing.JPanel {
             }
             MD();
         }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No puede agregar un registro con el mismo identificador, favor de limpiar y añadir un registro manualmente");
+        }
     }//GEN-LAST:event_btnAgregarMouseClicked
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
         //boton modificar de comida
         String idc = ID_C.getText();
+        String nc = Nombre_Comida.getText();
+        String pc = Precio_Comida.getText();
+        String dc = Descripcion_Comida.getText();
+        if("".equals(nc)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
+        }
+        if("".equals(pc)){
+            JOptionPane.showMessageDialog(null, "El campo de precio esta vacio");
+        }
+        if("".equals(dc)){
+            JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
+        }
+        else{
         if("".equals(idc)){
             JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
+        }
+        if("".equals(idc) || "".equals(dc) || "".equals(pc) || "".equals(nc)){
         }
         else{
             try{
@@ -733,10 +757,12 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Modificación excitosa");
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Error al modificar, registro no encontrado");
+                JOptionPane.showMessageDialog(null, "Error al modificar, el campo de precio solo puede tener numeros");
             }
             MD();
+            Vacio();
         }
+    }
     }//GEN-LAST:event_btnModificarMouseClicked
 
     private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
@@ -748,7 +774,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         //Elimina un registro segun su ID
         String idc = ID_C.getText();
         if("".equals(idc)){
-            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio o no selecciono ningun registro");
+            JOptionPane.showMessageDialog(null, "No a selecciono ningun registro");
         }
         else{
             try{
@@ -762,6 +788,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Error al eliminar, registro no encontrado");
             }
             MD();
+            Vacio();
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
@@ -811,7 +838,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
         else{
-            try {
+            buscarbebida(nb);
+            /*try {
                 pst = con.prepareStatement("SELECT * FROM bebidas WHERE Nombre = ?");
                 pst.setString(1,Nombre_Bebida.getText());
                 rs = pst.executeQuery();
@@ -825,7 +853,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
         }
     }//GEN-LAST:event_btnBuscarBMouseClicked
 
@@ -833,6 +861,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         String nc = Nombre_Bebida.getText();
         String pc = Precio_Bebida.getText();
         String dc = Descripcion_Bebida.getText();
+        String idc = ID_B.getText();
+        if("".equals(idc)){
         if("".equals(nc)){
             JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
@@ -841,6 +871,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         }
         if("".equals(dc)){
             JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
+        }
+        if("".equals(dc) || "".equals(pc) || "".equals(nc)){
         }
         else{
             try{
@@ -857,10 +889,29 @@ public class JPComidaYBebida extends javax.swing.JPanel {
             }
             MD();
         }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No puede agregar un registro con el mismo identificador, favor de limpiar y añadir un registro manualmente");
+        }
     }//GEN-LAST:event_btnAgregarBMouseClicked
 
     private void btnModificarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarBMouseClicked
         String idc = ID_B.getText();
+        String nc = Nombre_Bebida.getText();
+        String pc = Precio_Bebida.getText();
+        String dc = Descripcion_Bebida.getText();
+        if("".equals(nc)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
+        }
+        if("".equals(pc)){
+            JOptionPane.showMessageDialog(null, "El campo de precio esta vacio");
+        }
+        if("".equals(dc)){
+            JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
+        }
+        if("".equals(idc) || "".equals(dc) || "".equals(pc) || "".equals(nc)){
+        }
+        else{
         if("".equals(idc)){
             JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
         }
@@ -875,10 +926,12 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Modificación excitosa");
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Error al modificar, campos vacios");
+                JOptionPane.showMessageDialog(null, "Error al modificar, el campo de precio solo puede tener numeros");
             }
             MD();
+            Vacio();
         }
+    }
     }//GEN-LAST:event_btnModificarBMouseClicked
 
     private void btnClearBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearBMouseClicked
@@ -889,7 +942,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
     private void btnEliminarBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarBMouseClicked
         String idb = ID_B.getText();
         if("".equals(idb)){
-            JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio o no selecciono ningun registro");
+            JOptionPane.showMessageDialog(null, "No a selecciono ningun registro");
         }
         else{
             try{//Elimina un registro segun su ID
@@ -903,6 +956,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Error al eliminar, registro no encontrado");
             }
             MD();
+            Vacio();
         }
     }//GEN-LAST:event_btnEliminarBMouseClicked
 
@@ -1004,12 +1058,60 @@ public class JPComidaYBebida extends javax.swing.JPanel {
     void resetColor(JPanel panel){
         panel.setBackground(new Color(18,90,173));
     }
+    
+    public void buscarcomida(String busc){
+        String[]Campos = {"ID", "Nombre", "Precio", "Descripcion"};
+        String[]Registro = new String[4];//Espacio para registrar los campos de la tabla
+        modelo_comida = new DefaultTableModel(null,Campos);//Modelo para visualizar la tabla de comida
+        String SQL = "SELECT * FROM comida WHERE Nombre ='"+ busc+"';";//Comando de sql para visualizar todos los regitros de dicha tabla
+        try{
+            //Agrega los registros de la tabla comida de sql a la tabla
+            st = con.createStatement();
+            rs = st.executeQuery(SQL);
+            while (rs.next()){
+                //Titulos de la base de datos
+                Registro[0]= rs.getString("ID");
+                Registro[1]= rs.getString("Nombre");
+                Registro[2]= rs.getString("Precio");
+                Registro[3]= rs.getString("Descripcion");
+                modelo_comida.addRow(Registro);
+            }
+        //Coloca el modelos hechos anteriormente a las tablas
+        Tabla_comida.setModel(modelo_comida);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos, Producto no encontrado");
+        }
+    }
+    
+    public void buscarbebida(String busb){
+        String[]Campos = {"ID", "Nombre", "Precio", "Descripcion"};
+        String[]Registro = new String[4];//Espacio para registrar los campos de la tabla
+        modelo_bebida = new DefaultTableModel(null,Campos);//Modelo para visualizar la tabla de comida
+        String SQL = "SELECT * FROM bebidas WHERE Nombre ='"+ busb+"';";//Comando de sql para visualizar todos los regitros de dicha tabla
+        try{
+            //Agrega los registros de la tabla comida de sql a la tabla
+            st = con.createStatement();
+            rs = st.executeQuery(SQL);
+            while (rs.next()){
+                //Titulos de la base de datos
+                Registro[0]= rs.getString("ID");
+                Registro[1]= rs.getString("Nombre");
+                Registro[2]= rs.getString("Precio");
+                Registro[3]= rs.getString("Descripcion");
+                modelo_bebida.addRow(Registro);
+            }
+        //Coloca el modelos hechos anteriormente a las tablas
+        Tabla_bebida.setModel(modelo_bebida);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al Mostrar Datos, Producto no encontrado");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Descripcion_Bebida;
     private javax.swing.JTextField Descripcion_Comida;
-    private javax.swing.JTextField ID_B;
-    private javax.swing.JTextField ID_C;
+    private javax.swing.JLabel ID_B;
+    private javax.swing.JLabel ID_C;
     private javax.swing.JTextField Nombre_Bebida;
     private javax.swing.JTextField Nombre_Comida;
     private javax.swing.JTextField Precio_Bebida;

@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -64,7 +66,6 @@ public class JPComanda extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        ID_O = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -74,6 +75,7 @@ public class JPComanda extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         btnClear = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        ID_O = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(800, 550));
@@ -131,16 +133,16 @@ public class JPComanda extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("SIGUIENTE");
+        jLabel1.setText("AGREGAR");
 
         javax.swing.GroupLayout B_sig_OLayout = new javax.swing.GroupLayout(B_sig_O);
         B_sig_O.setLayout(B_sig_OLayout);
         B_sig_OLayout.setHorizontalGroup(
             B_sig_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(B_sig_OLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         B_sig_OLayout.setVerticalGroup(
             B_sig_OLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,8 +170,6 @@ public class JPComanda extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(Tabla);
-
-        ID_O.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Roboto Light", 0, 48)); // NOI18N
         jLabel2.setText("ORDEN");
@@ -315,6 +315,8 @@ public class JPComanda extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        ID_O.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -349,9 +351,9 @@ public class JPComanda extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ID_O, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
+                                .addGap(18, 18, 18)
+                                .addComponent(ID_O, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -405,8 +407,8 @@ public class JPComanda extends javax.swing.JPanel {
                     .addComponent(jLabel8)
                     .addComponent(jLabel12)
                     .addComponent(Hora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ID_O, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
+                    .addComponent(jLabel14)
+                    .addComponent(ID_O, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,7 +422,7 @@ public class JPComanda extends javax.swing.JPanel {
                             .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -429,6 +431,17 @@ public class JPComanda extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 540));
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean Fecha(String fecha){
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM HH:mm");
+            formatoFecha.setLenient(false);
+            formatoFecha.parse(fecha);
+        } catch (ParseException e) {
+            return true;
+        }
+        return false;
+    }
+    
     private void B_sig_OMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_sig_OMouseClicked
         String c = Comida1.getText();
         String cc =  C_C1.getText();
@@ -439,15 +452,17 @@ public class JPComanda extends javax.swing.JPanel {
         String cl = Cliente1.getText();
         if("".equals(c)){
             JOptionPane.showMessageDialog(null, "El campo de la comida esta vacio");
+        } else {
+            if("".equals(cc)){
+                JOptionPane.showMessageDialog(null, "El campo de la cantidad de comida esta vacio");
+            }
         }
         if("".equals(b)){
             JOptionPane.showMessageDialog(null, "El campo de la bebida esta vacio");
-        }
-        if("".equals(cc)){
-            JOptionPane.showMessageDialog(null, "El campo de la cantidad de comida esta vacio");
-        }
-        if("".equals(cb)){
-            JOptionPane.showMessageDialog(null, "El campo de la cantidad de bebida esta vacio");
+            } else {
+            if("".equals(cb)){
+                JOptionPane.showMessageDialog(null, "El campo de la cantidad de bebida esta vacio");
+            }
         }
         if("".equals(f)){
             JOptionPane.showMessageDialog(null, "El campo de la fecha esta vacio");
@@ -458,29 +473,35 @@ public class JPComanda extends javax.swing.JPanel {
         if("".equals(cl)){
             JOptionPane.showMessageDialog(null, "El campo del nombre del cliente esta vacia");
         }
-        else{
-        try{
-            String SQL = "INSERT INTO comanda(`Comida`, `Cantidad_Comida`, `Bebida`, `Cantidad_Bebida`, `Fecha`, `Hora`, `Cliente`) values(?,?,?,?,?,?,?);";
-            pst = con.prepareStatement(SQL);
-            //Registra los datos directamente en la tabla de mysql
-            //pst.setString(1, ID_O.getText());
-            pst.setString(1, Comida1.getText());
-            pst.setString(2, C_C1.getText());
-            pst.setString(3, Bebida1.getText());
-            pst.setString(4, C_B1.getText());
-            pst.setString(5, Fecha1.getText());
-            pst.setString(6, Hora1.getText());
-            pst.setString(7, Cliente1.getText());
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Registro excitoso");
-            Comida1.setText(null);
-            Bebida1.setText(null);
-            C_C1.setText(null);
-            C_B1.setText(null);
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al registrar");
-        }
-        MD();
+        if("".equals(cl) || "".equals(h) || "".equals(f) || "".equals(cc) || "".equals(cb) || "".equals(c) || "".equals(b)){
+        }else{
+            String fec = f +" "+ h;
+            if(Fecha(fec)){
+                JOptionPane.showMessageDialog(null, "Fecha y/o hora invalida");
+            }else{
+            try{
+                String SQL = "INSERT INTO comanda(`Comida`, `Cantidad_Comida`, `Bebida`, `Cantidad_Bebida`, `Fecha`, `Hora`, `Cliente`) values(?,?,?,?,?,?,?);";
+                pst = con.prepareStatement(SQL);
+                //Registra los datos directamente en la tabla de mysql
+                //pst.setString(1, ID_O.getText());
+                pst.setString(1, Comida1.getText());
+                pst.setString(2, C_C1.getText());
+                pst.setString(3, Bebida1.getText());
+                pst.setString(4, C_B1.getText());
+                pst.setString(5, Fecha1.getText());
+                pst.setString(6, Hora1.getText());
+                pst.setString(7, Cliente1.getText());
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Registro excitoso");
+                Comida1.setText(null);
+                Bebida1.setText(null);
+                C_C1.setText(null);
+                C_B1.setText(null);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Error al registrar, los campos de cantidad solo pueden tener numeros");
+            }
+            MD();
+            }
         }
     }//GEN-LAST:event_B_sig_OMouseClicked
 
@@ -555,14 +576,23 @@ public class JPComanda extends javax.swing.JPanel {
             Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
         }*/
         }
+        if(Tabla.getRowCount()<=0){
+            JOptionPane.showMessageDialog(null, "No hay ningun registro con el cliente a consultar");
+        }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
         String idc = ID_O.getText();
+        String f = Fecha1.getText();
+        String h = Hora1.getText();
         if("".equals(idc)){
             JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
         }
         else{
+            String fec = f +" "+ h;
+            if(Fecha(fec)){
+                JOptionPane.showMessageDialog(null, "Fecha y/o hora invalida");
+            }else{
         try{
             String SQL = "update comanda set Comida=?, Cantidad_Comida=?, Bebida=?, Cantidad_Bebida=?, Fecha=?, Hora=?, Cliente=? where ID=?";
             pst = con.prepareStatement(SQL);
@@ -577,12 +607,12 @@ public class JPComanda extends javax.swing.JPanel {
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error de Actualizacion");
+            JOptionPane.showMessageDialog(null, "Error de Actualizacion, los campos de cantidad solo pueden llevar numeros");
         }
         MD();
         Vacio();
         }
-        
+        }
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
@@ -602,6 +632,7 @@ public class JPComanda extends javax.swing.JPanel {
              JOptionPane.showMessageDialog(null, "Error al Eliminar, registro eliminado");
         }
         MD();
+        Vacio();
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
@@ -720,7 +751,7 @@ public class JPComanda extends javax.swing.JPanel {
     private javax.swing.JTextField Comida1;
     private javax.swing.JTextField Fecha1;
     private javax.swing.JTextField Hora1;
-    private javax.swing.JTextField ID_O;
+    private javax.swing.JLabel ID_O;
     private javax.swing.JTable Tabla;
     private javax.swing.JLabel bebida;
     private javax.swing.JPanel btnActualizar;

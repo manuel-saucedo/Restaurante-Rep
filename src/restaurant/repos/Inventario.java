@@ -437,7 +437,7 @@ DefaultTableModel modelo;
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
         if (txtIDI.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Identificador ID no encontrado");
+             JOptionPane.showMessageDialog(null, "Error Campo vacio, Verifique que el identificador ID este correcto");
         }else{
             
         
@@ -452,7 +452,7 @@ DefaultTableModel modelo;
                 txtPrecI.setText(rs.getString("Precioxgr_ml"));
                 txtProvI.setText(rs.getString("Proveedor"));
             }else{
-                JOptionPane.showMessageDialog(null, "No existe un producto con esos ");
+                JOptionPane.showMessageDialog(null, "no es posible buscar datos, si el ID es Erroneo o esta vacio");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
@@ -525,7 +525,7 @@ DefaultTableModel modelo;
     
     public void insertarDatos(){
      if (txtIDI.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+             JOptionPane.showMessageDialog(null, "Error Campos Vacios, No es posible insertar datos vacios, Verifique que los datos esten correctos");
         }else{    
     try{
         String SQL = "insert into inventario(ID,Nombre, Cantidadxgr_ml, Precioxgr_ml, Proveedor) values(?,?,?,?,?)";
@@ -540,7 +540,7 @@ DefaultTableModel modelo;
         pst.executeUpdate();
         JOptionPane.showMessageDialog(null, "Registro excitoso");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Registro");
+        JOptionPane.showMessageDialog(null, "no es posible insertar datos, si existen campos vacios");
     }
      }
 }
@@ -553,7 +553,7 @@ DefaultTableModel modelo;
 }
         public void actualizarDatos(){
              if (txtIDI.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
+             JOptionPane.showMessageDialog(null, "Error campo vacio, no es posible actualizar un campo vacio, Verifique que los datos esten correctos");
         }else{
     try{
         String SQL = "update inventario set Nombre=?,Cantidadxgr_ml=?,Precioxgr_ml=?,Proveedor=? where ID=?";
@@ -567,15 +567,15 @@ DefaultTableModel modelo;
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Actualizacion ");
+        JOptionPane.showMessageDialog(null, "no es posible Actualizar datos, si existen campos vacios");
     }
   }
 }        
     
     public void eliminarRegistro(){
-        
-                //int filaSeleccionada = TableEm.getSelectedRow();
-                
+        if (txtIDI.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error campo vacio, No es posible eliminar un campo Vacio, Verifique que los datos esten correctos");
+        }else{        
         try{
             ps = con.prepareStatement("delete from inventario where ID=?");
             ps.setInt(1,Integer.parseInt(txtIDI.getText()));
@@ -584,7 +584,8 @@ DefaultTableModel modelo;
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error de eliminacion, registro no encontrado");
+             JOptionPane.showMessageDialog(null, "no es posible eliminar datos, si no seleccionan el registro o lo digitan");
+        }
         }
     }
     void setColor(JPanel panel){

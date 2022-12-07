@@ -380,7 +380,7 @@ Statement st;
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
          if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error al Buscar Identificador, ID no encontrado");
+             JOptionPane.showMessageDialog(null, "Error Campo vacio, Verifique que el identificador ID este correcto");
         }else{    
         try {
         ps = con.prepareStatement("SELECT * FROM proveedores WHERE ID = ?");
@@ -396,7 +396,7 @@ Statement st;
             txtPrecioT.setText(rs.getString("Precio_Total"));
             txtTel.setText(rs.getString("Telefono"));
         }else{
-            JOptionPane.showMessageDialog(null, "No existe un producto con ese nombre");
+            JOptionPane.showMessageDialog(null, "no es posible buscar datos, si el ID es Erroneo o esta vacio");
         }
     } catch (SQLException ex) {
         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
@@ -453,7 +453,7 @@ Statement st;
     
      public void eliminarRegistro(){
           if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error al eliminar, Registro No encontrado");
+             JOptionPane.showMessageDialog(null, "Error campo vacio, No es posible eliminar un campo Vacio, Verifique que los datos esten correctos");
         }else{    
         int filaSeleccionada = Table.getSelectedRow();
         try{
@@ -464,7 +464,7 @@ Statement st;
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error de eliminacion "+ e.getMessage());
+             JOptionPane.showMessageDialog(null, "no es posible eliminar datos, si no seleccionan el registro o lo digitan");
         }
           }
     }
@@ -482,7 +482,7 @@ Statement st;
 
         public void insertarDatos(){
           if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error al Insertar, El campo del identificador esta vacio");
+             JOptionPane.showMessageDialog(null, "Error Campos Vacios, No es posible insertar datos vacios, Verifique que los datos esten correctos");
         }else{       
         try{
         String SQL = "insert into proveedores (ID,Nombre_legal,Nombre_comercial, Materia_prima,Cantidadxunidad, Precio_unitario, Precio_total,Telefono) values(?,?,?,?,?,?,?,?)";    
@@ -499,12 +499,15 @@ Statement st;
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Registro excitoso");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Registro  " +e.getMessage());
+        JOptionPane.showMessageDialog(null, "no es posible insertar datos, si existen campos vacios");
     }
           }
 }
   
         public void actualizarDatos(){
+     if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error campo vacio, no es posible actualizar un campo vacio, Verifique que los datos esten correctos");
+        }else{ 
      String SQL = "update proveedores set  Nombre_legal=?,Nombre_comercial=?,Materia_prima=?,Cantidadxunidad=?,Precio_unitario=?,Precio_total=?,Telefono =? where ID=?";
      if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Error al actualizar, registro no encontrado");
@@ -524,9 +527,10 @@ Statement st;
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Actualizacion  " +e.getMessage());
+        JOptionPane.showMessageDialog(null, "no es posible Actualizar datos, si existen campos vacios");
     }
     }
+    } 
 }
   
         public void mostrarDatos(){
@@ -551,7 +555,7 @@ Statement st;
        }
        Table.setModel(modelo);
    }catch(Exception e){
-       JOptionPane.showMessageDialog(null, "Error al Mostrar Datos "+ e.getMessage());
+       JOptionPane.showMessageDialog(null, "Error al Mostrar Datos ");
    }
     }
      

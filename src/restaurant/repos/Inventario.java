@@ -402,6 +402,17 @@ DefaultTableModel modelo;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDIActionPerformed
 
+    public boolean numero(String cadena){
+    boolean r;
+    try {
+        Integer.parseInt(cadena);
+        r = false;
+    } catch (NumberFormatException excepcion) {
+        r = true;
+    }
+    return r;
+}
+    
     private void TableIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableIMouseClicked
         int fila=TableI.getSelectedRow();
         if(fila==-1){
@@ -423,8 +434,6 @@ DefaultTableModel modelo;
 
     private void btnAñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAñadirMouseClicked
         insertarDatos();
-        limpiarCajas();
-        mostrarDatos();
     }//GEN-LAST:event_btnAñadirMouseClicked
 
     private void btnBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseClicked
@@ -437,10 +446,12 @@ DefaultTableModel modelo;
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
         if (txtIDI.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error Campo vacio, Verifique que el identificador ID este correcto");
-        }else{
-            
-        
+             JOptionPane.showMessageDialog(null, "Error, el campo de ID esta vacio");
+        }
+        if(numero(txtIDI.getText())){
+            JOptionPane.showMessageDialog(null, "El campo ID solo puede llevar numeros");
+        }
+        else{
          try {
             ps = con.prepareStatement("SELECT * FROM inventario WHERE ID = ?");
             ps.setString(1,txtIDI.getText());
@@ -452,7 +463,7 @@ DefaultTableModel modelo;
                 txtPrecI.setText(rs.getString("Precioxgr_ml"));
                 txtProvI.setText(rs.getString("Proveedor"));
             }else{
-                JOptionPane.showMessageDialog(null, "no es posible buscar datos, si el ID es Erroneo o esta vacio");
+                JOptionPane.showMessageDialog(null, "no es posible buscar datos, si el ID es Erroneo");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
@@ -463,8 +474,6 @@ DefaultTableModel modelo;
     private void btnActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActMouseClicked
         // TODO add your handling code here:
         actualizarDatos();
-        limpiarCajas();
-        mostrarDatos();
     }//GEN-LAST:event_btnActMouseClicked
 
     private void btnAñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAñadirMouseEntered
@@ -524,9 +533,35 @@ DefaultTableModel modelo;
     }//GEN-LAST:event_btnClearMouseExited
     
     public void insertarDatos(){
-     if (txtIDI.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error Campos Vacios, No es posible insertar datos vacios, Verifique que los datos esten correctos");
-        }else{    
+        if (txtIDI.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error el campo ID esta vacio, No es posible insertar datos vacios");
+        }
+        if(numero(txtIDI.getText())){
+                JOptionPane.showMessageDialog(null, "El campo ID solo puede llevar numeros");
+            }else{
+        if(txtNomI.getText().isEmpty()){//nombre
+            JOptionPane.showMessageDialog(null, "Error el campo nombre esta vacio");
+        }
+        if(txtCantI.getText().isEmpty()){//cantidad
+            JOptionPane.showMessageDialog(null, "Error el campo cantidad esta vacio");
+        }
+        if(txtPrecI.getText().isEmpty()){//precio
+            JOptionPane.showMessageDialog(null, "Error el campo precio esta vacio");
+        }
+        if(txtProvI.getText().isEmpty()){//proveedor
+            JOptionPane.showMessageDialog(null, "Error el campo proovedor esta vacio");
+        }
+        if(txtIDI.getText().isEmpty()||txtNomI.getText().isEmpty()||txtCantI.getText().isEmpty()||txtPrecI.getText().isEmpty()||txtProvI.getText().isEmpty()){
+        }else{
+            if(numero(txtCantI.getText())){
+                JOptionPane.showMessageDialog(null, "El campo cantidad solo puede llevar numeros");
+            }
+            if(numero(txtPrecI.getText())){
+                JOptionPane.showMessageDialog(null, "El campo precio solo puede llevar numeros enteros");
+            }
+            if(numero(txtCantI.getText())||numero(txtPrecI.getText())){
+                
+            }else{
     try{
         String SQL = "insert into inventario(ID,Nombre, Cantidadxgr_ml, Precioxgr_ml, Proveedor) values(?,?,?,?,?)";
         PreparedStatement pst = con.prepareStatement(SQL);
@@ -539,10 +574,14 @@ DefaultTableModel modelo;
         pst.setString(5,txtProvI.getText());
         pst.executeUpdate();
         JOptionPane.showMessageDialog(null, "Registro excitoso");
+        limpiarCajas();
+        mostrarDatos();
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "no es posible insertar datos, si existen campos vacios");
+        JOptionPane.showMessageDialog(null, "no es posible insertar datos, los campos de cantidad y precio deben ser numeros");
     }
      }
+        }
+        }
 }
         public void limpiarCajas(){
     txtIDI.setText("");
@@ -551,10 +590,37 @@ DefaultTableModel modelo;
     txtPrecI.setText("");
     txtProvI.setText("");
 }
-        public void actualizarDatos(){
-             if (txtIDI.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error campo vacio, no es posible actualizar un campo vacio, Verifique que los datos esten correctos");
-        }else{
+public void actualizarDatos(){
+        if (txtIDI.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error campo vacio, no es posible actualizar un campo vacio, Verifique que los datos esten correctos");
+        }
+        if(numero(txtIDI.getText())){
+                JOptionPane.showMessageDialog(null, "El campo ID solo puede llevar numeros");
+            }else{
+        if(txtNomI.getText().isEmpty()){//nombre
+            JOptionPane.showMessageDialog(null, "Error el campo nombre esta vacio");
+        }
+        if(txtCantI.getText().isEmpty()){//cantidad
+            JOptionPane.showMessageDialog(null, "Error el campo cantidad esta vacio");
+        }
+        if(txtPrecI.getText().isEmpty()){//precio
+            JOptionPane.showMessageDialog(null, "Error el campo precio esta vacio");
+        }
+        if(txtProvI.getText().isEmpty()){//proveedor
+            JOptionPane.showMessageDialog(null, "Error el campo proovedor esta vacio");
+        }
+        if(txtIDI.getText().isEmpty()||txtNomI.getText().isEmpty()||txtCantI.getText().isEmpty()||txtPrecI.getText().isEmpty()||txtProvI.getText().isEmpty()){
+        }
+        else{
+            if(numero(txtCantI.getText())){
+                JOptionPane.showMessageDialog(null, "El campo cantidad solo puede llevar numeros");
+            }
+            if(numero(txtPrecI.getText())){
+                JOptionPane.showMessageDialog(null, "El campo precio solo puede llevar numeros enteros");
+            }
+            if(numero(txtCantI.getText())||numero(txtPrecI.getText())){
+                
+            }else{
     try{
         String SQL = "update inventario set Nombre=?,Cantidadxgr_ml=?,Precioxgr_ml=?,Proveedor=? where ID=?";
         
@@ -566,15 +632,22 @@ DefaultTableModel modelo;
         ps.setInt(5, Integer.parseInt(txtIDI.getText()));
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
+        limpiarCajas();
+        mostrarDatos();
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "no es posible Actualizar datos, si existen campos vacios");
+        JOptionPane.showMessageDialog(null, "no es posible Actualizar datos, los campos de cantidad y precio deben ser numeros");
     }
+            }
   }
+        }
 }        
     
     public void eliminarRegistro(){
         if (txtIDI.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error campo vacio, No es posible eliminar un campo Vacio, Verifique que los datos esten correctos");
+             JOptionPane.showMessageDialog(null, "Error campo vacio, No es posible eliminar un campo Vacio");
+        }
+        if(numero(txtIDI.getText())){
+            JOptionPane.showMessageDialog(null, "El campo ID solo puede llevar numeros");
         }else{        
         try{
             ps = con.prepareStatement("delete from inventario where ID=?");
@@ -584,7 +657,7 @@ DefaultTableModel modelo;
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "no es posible eliminar datos, si no seleccionan el registro o lo digitan");
+             JOptionPane.showMessageDialog(null, "Error, registro no encontrado");
         }
         }
     }

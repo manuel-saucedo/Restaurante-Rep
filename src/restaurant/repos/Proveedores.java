@@ -362,8 +362,6 @@ Statement st;
 
     private void btnAñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAñadirMouseClicked
         insertarDatos();
-        limpiarCajas();
-        mostrarDatos();
     }//GEN-LAST:event_btnAñadirMouseClicked
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
@@ -374,13 +372,14 @@ Statement st;
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
         actualizarDatos();
-        limpiarCajas();
-        mostrarDatos();
     }//GEN-LAST:event_btnActualizarMouseClicked
 
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
          if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Error Campo vacio, Verifique que el identificador ID este correcto");
+        }
+         if(numero(txtID.getText())){
+           JOptionPane.showMessageDialog(null,"El campo del ID solo puede llevar numeros");
         }else{    
         try {
         ps = con.prepareStatement("SELECT * FROM proveedores WHERE ID = ?");
@@ -454,6 +453,9 @@ Statement st;
      public void eliminarRegistro(){
           if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Error campo vacio, No es posible eliminar un campo Vacio, Verifique que los datos esten correctos");
+        }
+          if(numero(txtID.getText())){
+           JOptionPane.showMessageDialog(null,"El campo del ID solo puede llevar numeros");
         }else{    
         int filaSeleccionada = Table.getSelectedRow();
         try{
@@ -468,6 +470,18 @@ Statement st;
         }
           }
     }
+     
+     public boolean numero(String cadena){
+    boolean r;
+    try {
+        Integer.parseInt(cadena);
+        r = false;
+    } catch (NumberFormatException excepcion) {
+        r = true;
+    }
+    return r;
+}
+     
     public void limpiarCajas(){
    
     txtID.setText("");
@@ -480,10 +494,51 @@ Statement st;
     txtTel.setText("");
 }
 
-        public void insertarDatos(){
-          if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error Campos Vacios, No es posible insertar datos vacios, Verifique que los datos esten correctos");
-        }else{       
+public void insertarDatos(){
+        if (txtID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error Campos Vacios, No es posible insertar datos vacios");
+        }
+        if(numero(txtID.getText())){
+           JOptionPane.showMessageDialog(null,"El campo del ID solo puede llevar numeros");
+        }
+        else{
+            if(txtNcom.getText().isEmpty()){//nombre comerciante
+                JOptionPane.showMessageDialog(null,"El campo del nombre comercial esta vacio");
+            }
+            if(txtNlegal.getText().isEmpty()){//nombre legal
+                JOptionPane.showMessageDialog(null,"El campo del nombre legal esta vacio");
+            }
+            if(txtMatprim.getText().isEmpty()){//materia prima
+                JOptionPane.showMessageDialog(null,"El campo de la materia prima esta vacio");
+            }
+            if(txtCporU.getText().isEmpty()){//cantidad por unidad
+                JOptionPane.showMessageDialog(null,"El campo de la cantidad esta vacio");
+            }
+            if(txtPrecioU.getText().isEmpty()){//Precio unitario
+                JOptionPane.showMessageDialog(null,"El campo del precio unitario esta vacio");
+            }
+            if(txtPrecioT.getText().isEmpty()){//precio total
+                JOptionPane.showMessageDialog(null,"El campo del precio total esta vacio");
+            }
+            if(txtTel.getText().isEmpty()){//telefono
+                JOptionPane.showMessageDialog(null,"El campo del telefono esta vacio");
+            }
+            if(txtID.getText().isEmpty() ||txtNcom.getText().isEmpty()||txtNlegal.getText().isEmpty()||txtMatprim.getText().isEmpty()||txtMatprim.getText().isEmpty()||txtPrecioU.getText().isEmpty()||txtPrecioT.getText().isEmpty()||txtTel.getText().isEmpty()){
+            }else{
+                if(numero(txtID.getText())){
+                    JOptionPane.showMessageDialog(null,"El campo del ID solo puede llevar numeros");
+                }
+                if(numero(txtCporU.getText())){
+                    JOptionPane.showMessageDialog(null,"El campo de la cantidad solo puede llevar numeros");
+                }
+                if(numero(txtPrecioU.getText())){
+                    JOptionPane.showMessageDialog(null,"El campo del precio unitario solo puede llevar numeros");
+                }
+                if(numero(txtPrecioT.getText())){
+                    JOptionPane.showMessageDialog(null,"El campo del precio total solo puede llevar numeros");
+                }
+                if(numero(txtID.getText())||numero(txtCporU.getText())||numero(txtPrecioU.getText())||numero(txtPrecioT.getText())){
+                }else{
         try{
         String SQL = "insert into proveedores (ID,Nombre_legal,Nombre_comercial, Materia_prima,Cantidadxunidad, Precio_unitario, Precio_total,Telefono) values(?,?,?,?,?,?,?,?)";    
         ps = con.prepareStatement(SQL);        
@@ -498,20 +553,63 @@ Statement st;
         ps.setString(8, txtTel.getText());
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Registro excitoso");
+        limpiarCajas();
+        mostrarDatos();
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "no es posible insertar datos, si existen campos vacios");
+        JOptionPane.showMessageDialog(null, "no es posible insertar datos");
     }
+                }
           }
+        }
 }
   
-        public void actualizarDatos(){
+public void actualizarDatos(){
      if (txtID.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "Error campo vacio, no es posible actualizar un campo vacio, Verifique que los datos esten correctos");
-        }else{ 
+            JOptionPane.showMessageDialog(null, "Error campo vacio, no es posible actualizar un campo vacio");
+        }
+     if(numero(txtID.getText())){
+           JOptionPane.showMessageDialog(null,"El campo del ID solo puede llevar numeros");
+        }
+     else{
      String SQL = "update proveedores set  Nombre_legal=?,Nombre_comercial=?,Materia_prima=?,Cantidadxunidad=?,Precio_unitario=?,Precio_total=?,Telefono =? where ID=?";
-     if (txtID.getText().isEmpty()) {
+     /*if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Error al actualizar, registro no encontrado");
-        }else{    
+        }*/
+     if(txtNcom.getText().isEmpty()){//nombre comerciante
+                JOptionPane.showMessageDialog(null,"El campo del nombre comercial esta vacio");
+            }
+            if(txtNlegal.getText().isEmpty()){//nombre legal
+                JOptionPane.showMessageDialog(null,"El campo del nombre legal esta vacio");
+            }
+            if(txtMatprim.getText().isEmpty()){//materia prima
+                JOptionPane.showMessageDialog(null,"El campo de la materia prima esta vacio");
+            }
+            if(txtCporU.getText().isEmpty()){//cantidad por unidad
+                JOptionPane.showMessageDialog(null,"El campo de la cantidad esta vacio");
+            }
+            if(txtPrecioU.getText().isEmpty()){//Precio unitario
+                JOptionPane.showMessageDialog(null,"El campo del precio unitario esta vacio");
+            }
+            if(txtPrecioT.getText().isEmpty()){//precio total
+                JOptionPane.showMessageDialog(null,"El campo del precio total esta vacio");
+            }
+            if(txtTel.getText().isEmpty()){//telefono
+                JOptionPane.showMessageDialog(null,"El campo del telefono esta vacio");
+            }
+            if(txtID.getText().isEmpty() ||txtNcom.getText().isEmpty()||txtNlegal.getText().isEmpty()||txtMatprim.getText().isEmpty()||txtMatprim.getText().isEmpty()||txtPrecioU.getText().isEmpty()||txtPrecioT.getText().isEmpty()||txtTel.getText().isEmpty()){
+            }
+     else{
+                if(numero(txtCporU.getText())){
+                    JOptionPane.showMessageDialog(null,"El campo de la cantidad solo puede llevar numeros");
+                }
+                if(numero(txtPrecioU.getText())){
+                    JOptionPane.showMessageDialog(null,"El campo del precio unitario solo puede llevar numeros");
+                }
+                if(numero(txtPrecioT.getText())){
+                    JOptionPane.showMessageDialog(null,"El campo del precio total solo puede llevar numeros");
+                }
+                if(numero(txtCporU.getText())||numero(txtPrecioU.getText())||numero(txtPrecioT.getText())){
+                }else{
      try{
        ps = con.prepareStatement(SQL);
 
@@ -526,10 +624,13 @@ Statement st;
         ps.setString(8,txtTel.getText());
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
+        limpiarCajas();
+        mostrarDatos();
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "no es posible Actualizar datos, si existen campos vacios");
+        JOptionPane.showMessageDialog(null, "no es posible Actualizar datos");
     }
     }
+            }
     } 
 }
   
@@ -555,7 +656,7 @@ Statement st;
        }
        Table.setModel(modelo);
    }catch(Exception e){
-       JOptionPane.showMessageDialog(null, "Error al Mostrar Datos ");
+       JOptionPane.showMessageDialog(null, "Error al Mostrar Datos, registro no encontrado ");
    }
     }
      

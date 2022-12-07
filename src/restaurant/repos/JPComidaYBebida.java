@@ -713,11 +713,11 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 pst.setString(3, Descripcion_Comida.getText());
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Registro excitoso");
+                MD();
                 Vacio();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error de Registro, el campo de precio solo puede llevar numeros");
             }
-            MD();
         }
         }
         else{
@@ -731,6 +731,10 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         String nc = Nombre_Comida.getText();
         String pc = Precio_Comida.getText();
         String dc = Descripcion_Comida.getText();
+        if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
+        }
+        else{
         if("".equals(nc)){
             JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
@@ -739,10 +743,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         }
         if("".equals(dc)){
             JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
-        }
-        else{
-        if("".equals(idc)){
-            JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
         }
         if("".equals(idc) || "".equals(dc) || "".equals(pc) || "".equals(nc)){
         }
@@ -756,13 +756,13 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 pst.setInt(4, Integer.parseInt(ID_C.getText()));
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Modificación excitosa");
+                MD();
+                Vacio();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error al modificar, el campo de precio solo puede tener numeros");
             }
-            MD();
-            Vacio();
         }
-    }
+        }
     }//GEN-LAST:event_btnModificarMouseClicked
 
     private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
@@ -784,11 +784,11 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 if (n >= 0){
                     JOptionPane.showMessageDialog(null, "Registro eliminado");
                 }
+                MD();
+                Vacio();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error al eliminar, registro no encontrado");
             }
-            MD();
-            Vacio();
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
@@ -884,10 +884,11 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 pst.setString(3, Descripcion_Bebida.getText());
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Registro excitoso");
+                MD();
+                Vacio();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error de Registro, el campo de precio solo puede llevar numeros");
             }
-            MD();
         }
         }
         else{
@@ -900,6 +901,10 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         String nc = Nombre_Bebida.getText();
         String pc = Precio_Bebida.getText();
         String dc = Descripcion_Bebida.getText();
+        if("".equals(idc)){
+            JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
+        }
+        else{
         if("".equals(nc)){
             JOptionPane.showMessageDialog(null, "El campo del nombre esta vacio");
         }
@@ -911,11 +916,6 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         }
         if("".equals(idc) || "".equals(dc) || "".equals(pc) || "".equals(nc)){
         }
-        else{
-        if("".equals(idc)){
-            JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
-        }
-        else{
             try{
                 String SQL = "update bebidas set Nombre=?, Precio=?, Descripcion=? where ID=?";
                 pst = con.prepareStatement(SQL);
@@ -925,13 +925,12 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 pst.setInt(4, Integer.parseInt(ID_B.getText()));
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Modificación excitosa");
+                MD();
+                Vacio();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error al modificar, el campo de precio solo puede tener numeros");
             }
-            MD();
-            Vacio();
         }
-    }
     }//GEN-LAST:event_btnModificarBMouseClicked
 
     private void btnClearBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearBMouseClicked
@@ -952,11 +951,11 @@ public class JPComidaYBebida extends javax.swing.JPanel {
                 if (n >= 0){
                     JOptionPane.showMessageDialog(null, "Registro eliminado");
                 }
+                MD();
+                Vacio();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error al eliminar, registro no encontrado");
             }
-            MD();
-            Vacio();
         }
     }//GEN-LAST:event_btnEliminarBMouseClicked
 

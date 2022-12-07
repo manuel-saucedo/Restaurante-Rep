@@ -380,9 +380,19 @@ public class JPPuntoVenta extends javax.swing.JPanel {
 
     public boolean Fecha(String fecha){
         try {
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM HH:mm");
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM");
             formatoFecha.setLenient(false);
             formatoFecha.parse(fecha);
+        } catch (ParseException e) {
+            return true;
+        }
+        return false;
+    }
+    public boolean Hora(String hora){
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("HH:mm");
+            formatoFecha.setLenient(false);
+            formatoFecha.parse(hora);
         } catch (ParseException e) {
             return true;
         }
@@ -410,9 +420,13 @@ public class JPPuntoVenta extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "El campo de hora esta vacio");
         }
         else{
-            String fec = Fe +" "+ Ho;
-            if(Fecha(fec)){
-                JOptionPane.showMessageDialog(null, "Fecha y/o hora invalida");
+            if(Fecha(Fe)){
+                JOptionPane.showMessageDialog(null, "Fecha invalida");
+            }
+            if(Hora(Ho)){
+                JOptionPane.showMessageDialog(null, "Hora invalida");
+            }
+            if(Fecha(Fe)||Hora(Ho)){
             }else{
             String SQL = "SELECT `Comida`, `Cantidad_Comida`, comida.Precio, `Bebida`, `Cantidad_Bebida`, bebidas.Precio FROM comanda, comida, bebidas WHERE Cliente='"
                     +Cl+"' AND Fecha='"+Fe+"' AND Hora='"+Ho

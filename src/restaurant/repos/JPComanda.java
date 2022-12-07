@@ -402,13 +402,14 @@ public class JPComanda extends javax.swing.JPanel {
                             .addComponent(C_B1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(C_C1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel12)
-                    .addComponent(Hora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(ID_O, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ID_O, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel12)
+                        .addComponent(Hora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -493,14 +494,15 @@ public class JPComanda extends javax.swing.JPanel {
                 pst.setString(7, Cliente1.getText());
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Registro excitoso");
-                Comida1.setText(null);
+                MD();
+                Vacio();
+                /*Comida1.setText(null);
                 Bebida1.setText(null);
                 C_C1.setText(null);
-                C_B1.setText(null);
+                C_B1.setText(null);*/
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error al registrar, los campos de cantidad solo pueden tener numeros");
             }
-            MD();
             }
         }
     }//GEN-LAST:event_B_sig_OMouseClicked
@@ -606,11 +608,11 @@ public class JPComanda extends javax.swing.JPanel {
             pst.setInt(8, Integer.parseInt(ID_O.getText()));
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
+            MD();
+            Vacio();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error de Actualizacion, los campos de cantidad solo pueden llevar numeros");
         }
-        MD();
-        Vacio();
         }
         }
     }//GEN-LAST:event_btnActualizarMouseClicked
@@ -628,11 +630,11 @@ public class JPComanda extends javax.swing.JPanel {
             if (n >= 0){
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
+            MD();
+            Vacio();
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error al Eliminar, registro eliminado");
+             JOptionPane.showMessageDialog(null, "Error al Eliminar, registro no encontrado");
         }
-        MD();
-        Vacio();
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 

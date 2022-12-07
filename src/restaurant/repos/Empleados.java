@@ -475,6 +475,9 @@ Statement st;
     //Metodos
     
     public void eliminarRegistro(){
+         if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error campo vacio, No es posible eliminar un campo Vacio, Verifique que los datos esten correctos");
+        }else{ 
         int filaSeleccionada = TableEm.getSelectedRow();
          if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
@@ -487,8 +490,9 @@ Statement st;
                  JOptionPane.showMessageDialog(null, "Registro eliminado");
             }
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error al Eliminar ");
+             JOptionPane.showMessageDialog(null, "no es posible eliminar datos, si no seleccionan el registro o lo digitan");
         }
+         }
          }
     }
     public void limpiarCajas(){
@@ -501,6 +505,9 @@ Statement st;
     txtPuestoE.setText("");
 }
     public void insertarDatos(){
+        if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error Campos Vacios, No es posible insertar datos vacios, Verifique que los datos esten correctos");
+        }else{
         String SQL = "insert into empleados (ID,Nombre,Apellido_P, Apellido_M, Telefono, Direccion, ID_Puesto) values(?,?,?,?,?,?,?)";    
          if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
@@ -519,11 +526,15 @@ Statement st;
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Registro excitoso");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Registro ");
+        JOptionPane.showMessageDialog(null, "no es posible insertar datos, si existen campos vacios");
     }
+         }
          }
 }
 public void actualizarDatos(){
+    if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error campo vacio, no es posible actualizar un campo vacio, Verifique que los datos esten correctos");
+        }else{
      String SQL = "update empleados set  Nombre=?,Apellido_P=?,Apellido_M=?,Telefono=?,Direccion=?,ID_Puesto=? where ID=?";
      if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
@@ -542,7 +553,8 @@ public void actualizarDatos(){
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Actualizacion excitosa");
     }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error de Actualizacion");
+        JOptionPane.showMessageDialog(null, "no es posible Actualizar datos, si existen campos vacios");
+    }
     }
      }     
 }
@@ -589,6 +601,9 @@ public void actualizarDatos(){
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
         if (txtID.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Error Campo vacio, Verifique que el identificador ID este correcto");
+        }else{
+        if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
         }else{
         try {
@@ -604,12 +619,13 @@ public void actualizarDatos(){
             txtDireE.setText(rs.getString("Direccion"));
             txtPuestoE.setText(rs.getString("ID_Puesto"));
         }else{
-            JOptionPane.showMessageDialog(null, "No existe un Empleado con ese Nombre");
+            JOptionPane.showMessageDialog(null, "no es posible buscar datos, si el ID es Erroneo o esta vacio");
         }
     } catch (SQLException ex) {
         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
     }
-        }  
+        }
+        }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked

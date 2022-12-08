@@ -495,6 +495,9 @@ public class JPPuntoVenta extends javax.swing.JPanel {
             if(Double.parseDouble(PC)<=0){
                 JOptionPane.showMessageDialog(null, "Ingrese una cantidad valida con la que quiere pagar");
             }
+            if(Double.parseDouble(TT)<=0){
+                JOptionPane.showMessageDialog(null, "Presione primero el boton OK para calcular su cuenta");
+            }else{
             //int dpc = Integer.parseInt(PC);
             //int dtt = Integer.parseInt(TT);
             double dpc = Double.parseDouble(PC);
@@ -506,6 +509,7 @@ public class JPPuntoVenta extends javax.swing.JPanel {
             else{
                 Cambio.setText(""+CT);//Muestra el cambio
             }
+        }
         }
     }//GEN-LAST:event_btnVentaMouseClicked
 

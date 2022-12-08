@@ -492,6 +492,9 @@ public class JPPuntoVenta extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Presione primero el boton OK para calcular su cuenta");
             }
         }else{
+            if(Double.parseDouble(PC)<=0){
+                JOptionPane.showMessageDialog(null, "Ingrese una cantidad valida con la que quiere pagar");
+            }
             //int dpc = Integer.parseInt(PC);
             //int dtt = Integer.parseInt(TT);
             double dpc = Double.parseDouble(PC);

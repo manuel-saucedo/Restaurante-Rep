@@ -103,15 +103,44 @@ DefaultTableModel modelo;
                 txtIDIActionPerformed(evt);
             }
         });
+        txtIDI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDIKeyTyped(evt);
+            }
+        });
+
+        txtNomI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomIKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel4.setText("Cantidad:");
+
+        txtCantI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantIKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel5.setText("Precio:");
 
         jLabel6.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel6.setText("Proveedor:");
+
+        txtPrecI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecIKeyTyped(evt);
+            }
+        });
+
+        txtProvI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProvIKeyTyped(evt);
+            }
+        });
 
         TableI.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -531,6 +560,68 @@ DefaultTableModel modelo;
         // TODO add your handling code here:
         resetColor(btnClear);
     }//GEN-LAST:event_btnClearMouseExited
+
+    private void txtIDIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDIKeyTyped
+        //Limitacion de caracteres
+        if (txtIDI.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtIDIKeyTyped
+
+    private void txtNomIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomIKeyTyped
+        //Limitacion de caracteres
+        if (txtNomI.getText().length() >= 15) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+
+    }//GEN-LAST:event_txtNomIKeyTyped
+
+    private void txtCantIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantIKeyTyped
+        //Limitacion de caracteres
+        if (txtCantI.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'1' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtCantIKeyTyped
+
+    private void txtPrecIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecIKeyTyped
+        //Limitacion de caracteres
+        if (txtPrecI.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtPrecIKeyTyped
+
+    private void txtProvIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProvIKeyTyped
+        //Limitacion de caracteres
+        if (txtProvI.getText().length() >= 20) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+
+    }//GEN-LAST:event_txtProvIKeyTyped
     
     public void insertarDatos(){
         if (txtIDI.getText().isEmpty()) {

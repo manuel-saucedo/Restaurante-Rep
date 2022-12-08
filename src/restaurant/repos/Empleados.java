@@ -81,11 +81,23 @@ Statement st;
         jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         jLabel1.setText("Empleados");
 
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDKeyTyped(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel2.setText("ID:");
 
         jLabel3.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel3.setText("Nombre:");
+
+        txtNomE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomEKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel4.setText("Apell Paterno:");
@@ -93,24 +105,51 @@ Statement st;
         jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel5.setText("Apell Materno:");
 
+        txtApPE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApPEKeyTyped(evt);
+            }
+        });
+
         txtApME.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApMEActionPerformed(evt);
+            }
+        });
+        txtApME.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApMEKeyTyped(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel6.setText("ID_Puesto:");
 
+        txtPuestoE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPuestoEKeyTyped(evt);
+            }
+        });
+
         txtTelE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelEActionPerformed(evt);
+            }
+        });
+        txtTelE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelEKeyTyped(evt);
             }
         });
 
         txtDireE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDireEActionPerformed(evt);
+            }
+        });
+        txtDireE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireEKeyTyped(evt);
             }
         });
 
@@ -473,7 +512,7 @@ Statement st;
     }//GEN-LAST:event_txtApMEActionPerformed
 
     //Metodos
-    
+    //Eliminar datos
     public void eliminarRegistro(){
         if (txtID.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, el campo ID esta vacio o no selecciono ningun registro");
@@ -517,7 +556,7 @@ public boolean numero(String cadena){
     }
     return r;
 }
-    
+    //Insertar datos
     public void insertarDatos(){
         String SQL = "insert into empleados (ID,Nombre,Apellido_P, Apellido_M, Telefono, Direccion, ID_Puesto) values(?,?,?,?,?,?,?)";    
         if (txtID.getText().isEmpty()) {
@@ -768,6 +807,88 @@ public void actualizarDatos(){
         // TODO add your handling code here:
         resetColor(btnLimpiar);
     }//GEN-LAST:event_btnLimpiarMouseExited
+
+    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
+        //Limitacion de caracteres
+        if (txtID.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+        
+    }//GEN-LAST:event_txtIDKeyTyped
+
+    private void txtNomEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomEKeyTyped
+         //Limitacion de caracteres
+        if (txtNomE.getText().length() >= 20) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+        
+    }//GEN-LAST:event_txtNomEKeyTyped
+
+    private void txtApPEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApPEKeyTyped
+       //Limitacion de caracteres
+        if (txtApPE.getText().length() >= 20) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_txtApPEKeyTyped
+
+    private void txtApMEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApMEKeyTyped
+        //Limitacion de caracteres
+        if (txtApME.getText().length() >= 20) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_txtApMEKeyTyped
+
+    private void txtTelEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelEKeyTyped
+        //Limitacion de caracteres
+        if (txtTelE.getText().length() >= 10) {
+            evt.consume();
+        }
+       //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtTelEKeyTyped
+
+    private void txtDireEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireEKeyTyped
+       //Limitacion de caracteres
+        if (txtDireE.getText().length() >= 25) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDireEKeyTyped
+
+    private void txtPuestoEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuestoEKeyTyped
+        //Limitacion de caracteres
+        if (txtDireE.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+
+    }//GEN-LAST:event_txtPuestoEKeyTyped
     //Variables que llamamos para dar color a los botones
      void setColor(JPanel panel){
     panel.setBackground(new Color(21,101,192));

@@ -100,12 +100,54 @@ Statement st;
 
         jLabel8.setText("Telefono:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, -1, -1));
+
+        txtNlegal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNlegalKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNlegal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 220, -1));
+
+        txtNcom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNcomKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNcom, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 220, -1));
+
+        txtMatprim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMatprimKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtMatprim, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 220, -1));
+
+        txtCporU.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCporUKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtCporU, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 220, -1));
+
+        txtPrecioU.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioUKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtPrecioU, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 220, -1));
+
+        txtPrecioT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioTKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtPrecioT, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 220, -1));
+
+        txtTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 220, -1));
 
         btnAñadir.setBackground(new java.awt.Color(18, 90, 173));
@@ -276,6 +318,12 @@ Statement st;
         jScrollPane1.setViewportView(Table);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 550));
+
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 220, -1));
 
         jLabel12.setText("Identificador:");
@@ -447,6 +495,102 @@ Statement st;
     private void btnLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseExited
         resetColor(btnLimpiar);
     }//GEN-LAST:event_btnLimpiarMouseExited
+
+    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
+        //Limitacion de caracteres
+        if (txtID.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtIDKeyTyped
+
+    private void txtNlegalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNlegalKeyTyped
+        //Limitacion de caracteres
+        if (txtNlegal.getText().length() >= 20) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_txtNlegalKeyTyped
+
+    private void txtNcomKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNcomKeyTyped
+       //Limitacion de caracteres
+        if (txtNcom.getText().length() >= 20) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_txtNcomKeyTyped
+
+    private void txtMatprimKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatprimKeyTyped
+        //Limitacion de caracteres
+        if (txtMatprim.getText().length() >= 15) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_txtMatprimKeyTyped
+
+    private void txtCporUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCporUKeyTyped
+        //Limitacion de caracteres
+        if (txtCporU.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtCporUKeyTyped
+
+    private void txtPrecioUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioUKeyTyped
+        //Limitacion de caracteres
+        if (txtPrecioU.getText().length() >= 15) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtPrecioUKeyTyped
+
+    private void txtPrecioTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioTKeyTyped
+        //Limitacion de caracteres
+        if (txtPrecioT.getText().length() >= 15) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtPrecioTKeyTyped
+
+    private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
+       //Limitacion de caracteres
+        if (txtTel.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtTelKeyTyped
 
     //Metodos
     

@@ -73,6 +73,11 @@ public class Login extends javax.swing.JFrame {
                 txtuserMousePressed(evt);
             }
         });
+        txtuser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtuserKeyTyped(evt);
+            }
+        });
         BackGraund.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 250, 20));
 
         txtpass.setForeground(new java.awt.Color(204, 204, 204));
@@ -86,6 +91,11 @@ public class Login extends javax.swing.JFrame {
         txtpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpassActionPerformed(evt);
+            }
+        });
+        txtpass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtpassKeyTyped(evt);
             }
         });
         BackGraund.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 250, 20));
@@ -224,6 +234,22 @@ public class Login extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_txtpassMousePressed
+
+    private void txtpassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpassKeyTyped
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_txtpassKeyTyped
+
+    private void txtuserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtuserKeyTyped
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_txtuserKeyTyped
 
     /**
      * @param args the command line arguments

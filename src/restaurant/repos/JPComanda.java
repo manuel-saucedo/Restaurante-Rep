@@ -103,18 +103,53 @@ public class JPComanda extends javax.swing.JPanel {
         jLabel13.setText("Cliente");
 
         C_C1.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        C_C1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                C_C1KeyTyped(evt);
+            }
+        });
 
         C_B1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        C_B1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                C_B1KeyTyped(evt);
+            }
+        });
 
         Bebida1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Bebida1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Bebida1KeyTyped(evt);
+            }
+        });
 
         Fecha1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Fecha1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Fecha1KeyTyped(evt);
+            }
+        });
 
         Hora1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Hora1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Hora1KeyTyped(evt);
+            }
+        });
 
         Cliente1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Cliente1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Cliente1KeyTyped(evt);
+            }
+        });
 
         Comida1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Comida1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Comida1KeyTyped(evt);
+            }
+        });
 
         B_sig_O.setBackground(new java.awt.Color(18, 90, 173));
         B_sig_O.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -674,6 +709,80 @@ public class JPComanda extends javax.swing.JPanel {
     private void btnClearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseExited
         resetColor(btnClear);
     }//GEN-LAST:event_btnClearMouseExited
+
+    private void Comida1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Comida1KeyTyped
+        //Limitacion de caracteres
+        if (Comida1.getText().length() >= 25) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_Comida1KeyTyped
+
+    private void Bebida1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bebida1KeyTyped
+        //Limitacion de caracteres
+        if (Bebida1.getText().length() >= 25) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_Bebida1KeyTyped
+
+    private void C_C1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_C_C1KeyTyped
+        //Limitacion de caracteres
+        if (C_C1.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_C_C1KeyTyped
+
+    private void C_B1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_C_B1KeyTyped
+        //Limitacion de caracteres
+        if (C_B1.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_C_B1KeyTyped
+
+    private void Fecha1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Fecha1KeyTyped
+        //Limitacion de caracteres
+        if (Fecha1.getText().length() >= 10) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_Fecha1KeyTyped
+
+    private void Hora1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hora1KeyTyped
+        if (Hora1.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_Hora1KeyTyped
+
+    private void Cliente1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cliente1KeyTyped
+        //Limitacion de caracteres
+        if (Comida1.getText().length() >= 25) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_Cliente1KeyTyped
     
     public void MD(){//Muestra los datos guardados en mysql
         //Nombre de los campos en la tabla de Comanda

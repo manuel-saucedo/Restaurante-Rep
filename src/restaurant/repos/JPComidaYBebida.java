@@ -90,11 +90,21 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         jLabel1.setText("Nombre:");
 
         Nombre_Comida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Nombre_Comida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Nombre_ComidaKeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel2.setText("Descripción:");
 
         Descripcion_Comida.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Descripcion_Comida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Descripcion_ComidaKeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel3.setText("ID:");
@@ -103,6 +113,11 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         jLabel4.setText("Precio:");
 
         Precio_Comida.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Precio_Comida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Precio_ComidaKeyTyped(evt);
+            }
+        });
 
         Tabla_comida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -998,6 +1013,42 @@ public class JPComidaYBebida extends javax.swing.JPanel {
     private void btnEliminarBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarBMouseExited
         resetColor(btnEliminarB);
     }//GEN-LAST:event_btnEliminarBMouseExited
+
+    private void Nombre_ComidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nombre_ComidaKeyTyped
+        //Limitacion de caracteres
+        if (Nombre_Comida.getText().length() >= 25) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_Nombre_ComidaKeyTyped
+
+    private void Descripcion_ComidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Descripcion_ComidaKeyTyped
+       //Limitacion de caracteres
+        if (Descripcion_Comida.getText().length() >= 25) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_Descripcion_ComidaKeyTyped
+
+    private void Precio_ComidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Precio_ComidaKeyTyped
+        //Limitacion de caracteres
+        if (Precio_Comida.getText().length() >= 10) {
+            evt.consume();
+        }
+        //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_Precio_ComidaKeyTyped
     
     public void MD(){//Muestra los datos guardados en mysql
         //Nombre de los campos en las tablas

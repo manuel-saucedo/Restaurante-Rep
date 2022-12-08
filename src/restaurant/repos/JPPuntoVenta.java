@@ -98,11 +98,21 @@ public class JPPuntoVenta extends javax.swing.JPanel {
         jLabel6.setText("IVA:");
 
         Cliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Cliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ClienteKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel7.setText("Pagó con:");
 
         Pago_con.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Pago_con.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Pago_conKeyTyped(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         jLabel10.setText("Cliente:");
@@ -117,8 +127,18 @@ public class JPPuntoVenta extends javax.swing.JPanel {
         jLabel13.setText("Hora:");
 
         Fecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Fecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FechaKeyTyped(evt);
+            }
+        });
 
         Hora.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Hora.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                HoraKeyTyped(evt);
+            }
+        });
 
         btnBuscar.setBackground(new java.awt.Color(18, 90, 173));
         btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -551,6 +571,43 @@ public class JPPuntoVenta extends javax.swing.JPanel {
     private void btnOkMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOkMouseExited
     resetColor(btnOk);
     }//GEN-LAST:event_btnOkMouseExited
+
+    private void Pago_conKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pago_conKeyTyped
+        //Limitacion de caracteres
+        if (Pago_con.getText().length() >= 10) {
+            evt.consume();
+        }
+       //bloquear para solo letras
+        char validar= evt.getKeyChar();
+        if (validar <'0' || validar >'9' ) evt.consume(); {
+        
+        }
+    }//GEN-LAST:event_Pago_conKeyTyped
+
+    private void ClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ClienteKeyTyped
+        //Limitacion de caracteres
+        if (Cliente.getText().length() >= 20) {
+            evt.consume();
+        }
+        //bloquear para solo numeros
+        char c = evt.getKeyChar();
+        if ((c<'a' || c >'z') && (c<'A')| c>'Z') evt.consume(); {
+            
+        }
+    }//GEN-LAST:event_ClienteKeyTyped
+
+    private void FechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FechaKeyTyped
+         //Limitacion de caracteres
+        if (Fecha.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_FechaKeyTyped
+
+    private void HoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HoraKeyTyped
+        if (Hora.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_HoraKeyTyped
     
     public void Vacio(){//Limpia los campos
         Subtotal.setText("0");

@@ -425,7 +425,7 @@ Statement st;
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
          if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Error Campo vacio, Verifique que el identificador ID este correcto");
-        }
+        }else{
          if(numero(txtID.getText())){
            JOptionPane.showMessageDialog(null,"El campo del ID solo puede llevar numeros");
         }else{    
@@ -449,6 +449,7 @@ Statement st;
         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
     }
     }
+         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnAñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAñadirMouseEntered
@@ -597,7 +598,7 @@ Statement st;
      public void eliminarRegistro(){
           if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Error campo vacio, No es posible eliminar un campo Vacio, Verifique que los datos esten correctos");
-        }
+        }else{
           if(numero(txtID.getText())){
            JOptionPane.showMessageDialog(null,"El campo del ID solo puede llevar numeros");
         }else{    
@@ -612,6 +613,7 @@ Statement st;
         }catch(Exception e){
              JOptionPane.showMessageDialog(null, "no es posible eliminar datos, si no seleccionan el registro o lo digitan");
         }
+          }
           }
     }
      
@@ -641,7 +643,7 @@ Statement st;
 public void insertarDatos(){
         if (txtID.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error Campos Vacios, No es posible insertar datos vacios");
-        }
+        }else{
         if(numero(txtID.getText())){
            JOptionPane.showMessageDialog(null,"El campo del ID solo puede llevar numeros");
         }
@@ -703,6 +705,7 @@ public void insertarDatos(){
         JOptionPane.showMessageDialog(null, "no es posible insertar datos");
     }
                 }
+            }
           }
         }
 }
@@ -710,7 +713,7 @@ public void insertarDatos(){
 public void actualizarDatos(){
      if (txtID.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error campo vacio, no es posible actualizar un campo vacio");
-        }
+        }else{
      if(numero(txtID.getText())){
            JOptionPane.showMessageDialog(null,"El campo del ID solo puede llevar numeros");
         }
@@ -775,6 +778,7 @@ public void actualizarDatos(){
     }
     }
             }
+     }
     } 
 }
   

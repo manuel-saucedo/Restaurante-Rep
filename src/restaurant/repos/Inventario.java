@@ -476,7 +476,7 @@ DefaultTableModel modelo;
         // TODO add your handling code here:
         if (txtIDI.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Error, el campo de ID esta vacio");
-        }
+        }else{
         if(numero(txtIDI.getText())){
             JOptionPane.showMessageDialog(null, "El campo ID solo puede llevar numeros");
         }
@@ -498,6 +498,7 @@ DefaultTableModel modelo;
             Logger.getLogger(Inventario.class.getName()).log(Level.SEVERE, null, ex);
         }
        }
+        }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
     private void btnActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActMouseClicked
@@ -626,7 +627,7 @@ DefaultTableModel modelo;
     public void insertarDatos(){
         if (txtIDI.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error el campo ID esta vacio, No es posible insertar datos vacios");
-        }
+        }else{
         if(numero(txtIDI.getText())){
                 JOptionPane.showMessageDialog(null, "El campo ID solo puede llevar numeros");
             }else{
@@ -673,6 +674,7 @@ DefaultTableModel modelo;
      }
         }
         }
+        }
 }
         public void limpiarCajas(){
     txtIDI.setText("");
@@ -684,7 +686,7 @@ DefaultTableModel modelo;
 public void actualizarDatos(){
         if (txtIDI.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error campo vacio, no es posible actualizar un campo vacio, Verifique que los datos esten correctos");
-        }
+        }else{
         if(numero(txtIDI.getText())){
                 JOptionPane.showMessageDialog(null, "El campo ID solo puede llevar numeros");
             }else{
@@ -731,12 +733,13 @@ public void actualizarDatos(){
             }
   }
         }
+        }
 }        
     
     public void eliminarRegistro(){
         if (txtIDI.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Error campo vacio, No es posible eliminar un campo Vacio");
-        }
+        }else{
         if(numero(txtIDI.getText())){
             JOptionPane.showMessageDialog(null, "El campo ID solo puede llevar numeros");
         }else{        
@@ -749,6 +752,7 @@ public void actualizarDatos(){
             }
         }catch(Exception e){
              JOptionPane.showMessageDialog(null, "Error, registro no encontrado");
+        }
         }
         }
     }

@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package restaurant.repos;
-
-
-
 import SQLConexion.Conexion;
 import java.awt.Color;
 import java.sql.Connection;
@@ -516,10 +513,10 @@ Statement st;
     public void eliminarRegistro(){
         if (txtID.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, el campo ID esta vacio o no selecciono ningun registro");
-        }
+        }else{
         if(numero(txtID.getText())){
                 JOptionPane.showMessageDialog(null, "El campo de ID solo debe llevar numeros");
-            }else{ 
+            }else{
         int filaSeleccionada = TableEm.getSelectedRow();
          if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
@@ -536,6 +533,7 @@ Statement st;
         }
          }
          }
+        }
     }
     public void limpiarCajas(){
     txtID.setText("");
@@ -561,7 +559,7 @@ public boolean numero(String cadena){
         String SQL = "insert into empleados (ID,Nombre,Apellido_P, Apellido_M, Telefono, Direccion, ID_Puesto) values(?,?,?,?,?,?,?)";    
         if (txtID.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
-        }
+        }else{
         if(numero(txtID.getText())){
                 JOptionPane.showMessageDialog(null, "El campo de ID solo debe llevar numeros");
             }else{
@@ -616,6 +614,7 @@ public boolean numero(String cadena){
     }
          }
         }
+        }
 }
 }
 public void actualizarDatos(){
@@ -625,7 +624,7 @@ public void actualizarDatos(){
      String SQL = "update empleados set  Nombre=?,Apellido_P=?,Apellido_M=?,Telefono=?,Direccion=?,ID_Puesto=? where ID=?";
      if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "El campo del identificador esta vacio");
-        }
+        }else{
      if(numero(txtID.getText())){
                 JOptionPane.showMessageDialog(null, "El campo de ID solo debe llevar numeros");
             }
@@ -677,6 +676,7 @@ public void actualizarDatos(){
     }
     }
         }
+     }
      }     
 }
     public void mostrarDatos(){
@@ -721,7 +721,7 @@ public void actualizarDatos(){
         // TODO add your handling code here:
         if (txtID.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "Error, el campo ID esta vacio");
-        }
+        }else{
         if(numero(txtID.getText())){
                 JOptionPane.showMessageDialog(null, "El campo de ID solo debe llevar numeros");
             }else{
@@ -743,7 +743,7 @@ public void actualizarDatos(){
     } catch (SQLException ex) {
         Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
     }
-        
+        }
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 

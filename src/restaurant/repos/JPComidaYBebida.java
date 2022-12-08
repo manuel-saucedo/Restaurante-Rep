@@ -719,6 +719,10 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         if("".equals(dc) || "".equals(pc) || "".equals(nc)){
         }
         else{
+            int pre = Integer.parseInt(pc);
+            if(pre<=0){
+                JOptionPane.showMessageDialog(null, "No puede agregar valores no validos en el campo de precio");
+            }else{
             try{
                 String SQL = "INSERT INTO comida(`Nombre`, `Precio`, `Descripcion`) values(?,?,?);";
                 pst = con.prepareStatement(SQL);
@@ -733,6 +737,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error de Registro, el campo de precio solo puede llevar numeros");
             }
+        }
         }
         }
         else{
@@ -762,6 +767,10 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         if("".equals(idc) || "".equals(dc) || "".equals(pc) || "".equals(nc)){
         }
         else{
+            int pre = Integer.parseInt(pc);
+            if(pre<=0){
+                JOptionPane.showMessageDialog(null, "No puede agregar valores no validos en el campo de precio");
+            }else{
             try{
                 String SQL = "update comida set Nombre=?, Precio=?, Descripcion=? where ID=?";
                 pst = con.prepareStatement(SQL);
@@ -776,6 +785,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error al modificar, el campo de precio solo puede tener numeros");
             }
+        }
         }
         }
     }//GEN-LAST:event_btnModificarMouseClicked
@@ -890,6 +900,10 @@ public class JPComidaYBebida extends javax.swing.JPanel {
         if("".equals(dc) || "".equals(pc) || "".equals(nc)){
         }
         else{
+            int pre = Integer.parseInt(pc);
+            if(pre<=0){
+                JOptionPane.showMessageDialog(null, "No puede agregar valores no validos en el campo de precio");
+            }else{
             try{
                 String SQL = "INSERT INTO bebidas(`Nombre`, `Precio`, `Descripcion`) values(?,?,?);";
                 pst = con.prepareStatement(SQL);
@@ -904,6 +918,7 @@ public class JPComidaYBebida extends javax.swing.JPanel {
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error de Registro, el campo de precio solo puede llevar numeros");
             }
+        }
         }
         }
         else{
@@ -930,7 +945,11 @@ public class JPComidaYBebida extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "La descripcion esta vacia");
         }
         if("".equals(idc) || "".equals(dc) || "".equals(pc) || "".equals(nc)){
-        }
+        }else{
+            int pre = Integer.parseInt(pc);
+            if(pre<=0){
+                JOptionPane.showMessageDialog(null, "No puede agregar valores no validos en el campo de precio");
+            }else{
             try{
                 String SQL = "update bebidas set Nombre=?, Precio=?, Descripcion=? where ID=?";
                 pst = con.prepareStatement(SQL);
@@ -945,6 +964,8 @@ public class JPComidaYBebida extends javax.swing.JPanel {
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Error al modificar, el campo de precio solo puede tener numeros");
             }
+            }
+        }
         }
     }//GEN-LAST:event_btnModificarBMouseClicked
 

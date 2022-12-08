@@ -484,8 +484,13 @@ public class JPPuntoVenta extends javax.swing.JPanel {
     private void btnVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseClicked
         String PC = Pago_con.getText();
         String TT = Total.getText();
-        if("".equals(PC)){
-            JOptionPane.showMessageDialog(null, "Ingrese la cantidad con la que pagará en el campo: Pagar con");
+        if("".equals(PC)||"".equals(TT)){
+            if("".equals(PC)){
+                JOptionPane.showMessageDialog(null, "Ingrese la cantidad con la que pagará en el campo: Pagar con");
+            }
+            if("".equals(TT)){
+                JOptionPane.showMessageDialog(null, "Presione primero el boton OK para calcular su cuenta");
+            }
         }else{
             //int dpc = Integer.parseInt(PC);
             //int dtt = Integer.parseInt(TT);

@@ -469,9 +469,19 @@ public class JPComanda extends javax.swing.JPanel {
 
     public boolean Fecha(String fecha){
         try {
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM HH:mm");
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM");
             formatoFecha.setLenient(false);
             formatoFecha.parse(fecha);
+        } catch (ParseException e) {
+            return true;
+        }
+        return false;
+    }
+    public boolean Hora(String hora){
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("HH:mm");
+            formatoFecha.setLenient(false);
+            formatoFecha.parse(hora);
         } catch (ParseException e) {
             return true;
         }
@@ -511,9 +521,23 @@ public class JPComanda extends javax.swing.JPanel {
         }
         if("".equals(cl) || "".equals(h) || "".equals(f) || "".equals(cc) || "".equals(cb) || "".equals(c) || "".equals(b)){
         }else{
-            String fec = f +" "+ h;
-            if(Fecha(fec)){
-                JOptionPane.showMessageDialog(null, "Fecha y/o hora invalida");
+            if(Fecha(f)){
+                JOptionPane.showMessageDialog(null, "Fecha invalida");
+            }
+            if(Hora(h)){
+                JOptionPane.showMessageDialog(null, "Hora invalida");
+            }
+            if(Fecha(f)||Hora(h)){
+            }else{
+                int pre = Integer.parseInt(cc);
+                int ca = Integer.parseInt(cb);
+            if(pre<=0){
+                JOptionPane.showMessageDialog(null, "No puede agregar valores no validos en el campo de cantidad de comida");
+            }
+            if(ca<=0){
+                JOptionPane.showMessageDialog(null, "No puede agregar valores no validos en el campo de cantidad de bebida");
+            }
+            if(pre<=0 || ca <=0){
             }else{
             try{
                 String SQL = "INSERT INTO comanda(`Comida`, `Cantidad_Comida`, `Bebida`, `Cantidad_Bebida`, `Fecha`, `Hora`, `Cliente`) values(?,?,?,?,?,?,?);";
@@ -539,6 +563,7 @@ public class JPComanda extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Error al registrar, los campos de cantidad solo pueden tener numeros");
             }
             }
+        }
         }
     }//GEN-LAST:event_B_sig_OMouseClicked
 
@@ -620,15 +645,58 @@ public class JPComanda extends javax.swing.JPanel {
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
         String idc = ID_O.getText();
+        String c = Comida1.getText();
+        String cc =  C_C1.getText();
+        String b = Bebida1.getText();
+        String cb = C_B1.getText();
         String f = Fecha1.getText();
         String h = Hora1.getText();
+        String cl = Cliente1.getText();
         if("".equals(idc)){
             JOptionPane.showMessageDialog(null, "Ningun registro seleccionado");
+        }else{
+        if("".equals(c)){
+            JOptionPane.showMessageDialog(null, "El campo de la comida esta vacio");
+        } else {
+            if("".equals(cc)){
+                JOptionPane.showMessageDialog(null, "El campo de la cantidad de comida esta vacio");
+            }
         }
-        else{
-            String fec = f +" "+ h;
-            if(Fecha(fec)){
-                JOptionPane.showMessageDialog(null, "Fecha y/o hora invalida");
+        if("".equals(b)){
+            JOptionPane.showMessageDialog(null, "El campo de la bebida esta vacio");
+            } else {
+            if("".equals(cb)){
+                JOptionPane.showMessageDialog(null, "El campo de la cantidad de bebida esta vacio");
+            }
+        }
+        if("".equals(f)){
+            JOptionPane.showMessageDialog(null, "El campo de la fecha esta vacio");
+        }
+        if("".equals(h)){
+            JOptionPane.showMessageDialog(null, "El campo de la hora esta vacio");
+        }
+        if("".equals(cl)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre del cliente esta vacia");
+        }
+        if("".equals(cl) || "".equals(h) || "".equals(f) || "".equals(cc) || "".equals(cb) || "".equals(c) || "".equals(b)){
+        }else{
+            if(Fecha(f)){
+                JOptionPane.showMessageDialog(null, "Fecha invalida");
+            }
+            if(Hora(h)){
+                JOptionPane.showMessageDialog(null, "Hora invalida");
+            }
+            if(Fecha(f)||Hora(h)){
+            }else{
+                int pre = Integer.parseInt(cc);
+                int ca = Integer.parseInt(cb);
+            if(pre<=0){
+                JOptionPane.showMessageDialog(null, "No puede agregar valores no validos en el campo de cantidad de comida");
+            }
+            if(ca<=0){
+                JOptionPane.showMessageDialog(null, "No puede agregar valores no validos en el campo de cantidad de bebida");
+            }
+            if(pre<=0 || ca <=0){
             }else{
         try{
             String SQL = "update comanda set Comida=?, Cantidad_Comida=?, Bebida=?, Cantidad_Bebida=?, Fecha=?, Hora=?, Cliente=? where ID=?";
@@ -647,6 +715,8 @@ public class JPComanda extends javax.swing.JPanel {
             Vacio();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error de Actualizacion, los campos de cantidad solo pueden llevar numeros");
+        }
+        }
         }
         }
         }
